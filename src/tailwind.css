@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aquí puedes meter utilidades personalizadas o animaciones globales */
+@layer utilities {
+  @keyframes loading {
+    0% { transform: translateX(-100%); }
+    60% { transform: translateX(120%); }
+    100% { transform: translateX(120%); }
+  }
+}
