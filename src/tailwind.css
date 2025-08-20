@@ -2,26 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Animación que usamos en el Splash (si la necesitas) */
-@layer utilities {
-  @keyframes loading {
-    0% { transform: translateX(-100%); }
-    60% { transform: translateX(120%); }
-    100% { transform: translateX(120%); }
+/* ================== VARIABLES & BASE ================== */
+@layer base {
+  :root {
+    /* Paleta Coolors */
+    --pink-soft: #FDC5F5;
+    --pink-accent: #F7AEF8;
+    --lila: #B388EB;
+    /* primario */
+    --lila-soft: #C2A0EF;
+    /* borde “hoja” / secundaria */
+    --lila-muted: #CEB3F2;
+    /* textos/muted */
+    --text: #000000;
+    /* buen contraste */
+  }
+
+  html,
+  body {
+    background: #ffffff;
+    /* mantén fondo blanco como wireframe */
+    color: var(--text);
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mejora enfoque accesible base */
+  *:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--pink-accent) 55%, transparent);
+    outline-offset: 2px;
   }
 }
 
-@layer base {
-  :root { color-scheme: light; }     /* scrollbars y UI claras */
-  html, body { background: #ffffff; } /* fondo blanco global */
-  body { color: #B388EB; }            /* texto base gris oscuro */
+/* ================== UTILITIES ================== */
+@layer utilities {
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    60% {
+      transform: translateX(120%);
+    }
+
+    100% {
+      transform: translateX(120%);
+    }
+  }
 }
 
-/* ====== Estilos del Login (equivalentes al SCSS) ====== */
+/* ================== COMPONENTES ================== */
 @layer components {
-  /* “Hoja” con borde dorado interno */
+
+  /* ---- “Hoja” contenedora del login ---- */
   .login-sheet {
-    box-shadow: inset 0 0 0 4px #f2c94c;
+    /* borde interno con color de la paleta */
+    box-shadow:
+      inset 0 0 0 3px var(--lila-soft),
+      0 10px 24px rgba(179, 136, 235, 0.18);
+    border-radius: 1.25rem;
+    background: #fff;
   }
 
   .login-body {
@@ -30,58 +71,254 @@
 
   .login-label {
     display: block;
-    color: #ffffff;
+    color: black;
     font-size: 16px;
     margin-bottom: 6px;
   }
 
+  /* Línea inferior tipo wireframe */
   .login-line-input {
     appearance: none;
     display: block;
     width: 100%;
-    padding: 2px 0 4px 0;
-    border: none;
+    padding: 2px 0 6px 0;
     background: transparent;
-    border-bottom: 2px solid #ececec;
+    border: none;
+    border-bottom: 2px solid #1f2937;
+    /* gris oscuro para contraste */
     font-size: 16px;
     outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
   }
+
   .login-line-input:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: var(--lila);
+    box-shadow: 0 3px 0 0 var(--pink-accent);
   }
 
   .login-forgot {
     background: transparent;
     border: none;
-    color: #9ca3af; /* muted */
     font-size: 14px;
+    color: #6b7280;
     cursor: pointer;
   }
 
+  .login-forgot:hover {
+    color: var(--lila);
+  }
+
+  /* Botón principal (pill) */
   .login-primary-btn {
     width: 220px;
     height: 56px;
-    border: 1.5px solid #1f2937; /* gris oscuro */
     border-radius: 9999px;
-    background: #dddddd;
-    color: #ffffff;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.06s ease;
+    transition: transform .06s ease, background-color .15s ease, border-color .15s ease;
+    background: var(--lila);
+    color: #fff;
+    border: 2px solid var(--lila);
   }
-  .login-primary-btn:active { transform: translateY(1px); }
-  .login-primary-btn:disabled { opacity: .8; cursor: not-allowed; }
 
+  input {
+    color: black;
+    /* El texto que el usuario escribe */
+  }
 
+  .login-primary-btn:hover {
+    background: color-mix(in srgb, var(--lila) 85%, black 15%);
+    border-color: color-mix(in srgb, var(--lila) 85%, black 15%);
+  }
+
+  .login-primary-btn:active {
+    transform: translateY(1px);
+  }
+
+  .login-primary-btn:disabled {
+    opacity: .8;
+    cursor: not-allowed;
+  }
+
+  .login-container label {
+    color: black;
+  }
+
+  /* Botón secundario del login (“Registrarse”) */
   .register-btn {
-    @apply px-6 py-3 rounded-full border-2 border-purple-400 text-purple-600 font-semibold text-sm transition;
-  }
-  .register-btn:hover {
-    @apply bg-purple-100;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: .95rem;
+    border: 2px solid var(--lila-soft);
+    color: var(--lila);
+    background: transparent;
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
   }
 
+  .register-btn:hover {
+    background: color-mix(in srgb, var(--pink-accent) 35%, white);
+    border-color: var(--lila);
+  }
+}
+
+/* ================== OVERRIDES PARA EL REGISTER ================== */
+/* No podemos editar el TSX, así que ajustamos las utilidades usadas allí
+   para que coincidan con tu paleta y añadan un focus lindo. */
+
+/* Botón “Crear cuenta” (usa bg-purple-600) */
+.bg-purple-600 {
+  background-color: var(--lila) !important;
+  border-color: var(--lila) !important;
+}
+
+.bg-purple-600:hover {
+  background-color: color-mix(in srgb, var(--lila) 85%, black 15%) !important;
+}
+
+/* Botón contorneado “Volver a Login” (usa border-purple-400 + text-purple-600) */
+.border-purple-400 {
+  border-color: var(--lila-soft) !important;
+}
+
+.text-purple-600 {
+  color: var(--lila) !important;
+}
+
+.bg-purple-100 {
+  background-color: color-mix(in srgb, var(--pink-accent) 35%, white) !important;
+}
+
+/* Inputs del Register (tienen clases: w-full border rounded px-3 py-2)
+   Mejoramos color de borde y focus sin tocar el login (que usa .login-line-input). */
+input:not(.login-line-input).border {
+  border-color: var(--lila-muted) !important;
+  background: #fff;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+input:not(.login-line-input).border:focus {
+  border-color: var(--lila) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--pink-accent) 45%, transparent);
+}
+
+/* Títulos/textos en tarjetas del Register */
+.text-neutral-800 {
+  color: var(--text) !important;
+}
+
+/* Bordes/sombras de la tarjeta del Register para que combine */
+.border {
+  border-color: var(--lila-soft) !important;
+}
+
+.shadow {
+  box-shadow: 0 10px 24px rgba(179, 136, 235, 0.18) !important;
+}
+
+.rounded-xl {
+  border-radius: 1.25rem !important;
+}
+
+/* ===== Ajustes SOLO para la vista de Register 
+
+/* 1) Card central (el div que tiene w-[360px]) */
+.w-\[360px\] {
+  border-radius: 1.25rem;
+  /* borde interno sutil como hoja */
+  box-shadow: inset 0 0 0 3px var(--lila-soft), 0 10px 24px rgba(179, 136, 235, .14);
+}
+
+/* 2) Marca “MYCARE” (la tienes con tracking y text-neutral-700) */
+.text-neutral-700 {
+  color: var(--text) !important;
+}
+
+/* 3) Inputs grandes de Register (tus 3 inputs del formulario) */
+.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl {
+  border-color: #9CA3AF !important;
+  /* gris del wireframe */
+  background: #fff;
+  color: #000;
+  /* lo que escribes, negro */
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl::placeholder {
+  color: #9CA3AF;
+  /* placeholder gris */
+}
+
+.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2l:focus,
+.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl:focus {
+  border-color: var(--lila) !important;
+  /* enfoque con la paleta */
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--pink-accent) 40%, transparent);
+  outline: none;
+}
+
+/* 4) Contenedores de botones → centrados como en el wireframe */
+.w-\[360px\] form>.flex {
+  justify-content: center !important;
+}
+
+/* 5) Botón grande “Registrarse” (type="submit") */
+.w-\[360px\] form button[type="submit"] {
+  height: 4rem;
+  /* h-16 */
+  width: 18rem;
+  /* w-72 */
+  border-radius: 9999px;
+  border: 1.5px solid #000;
+  /* borde negro como mock */
+  background: #E5E7EB;
+  /* gris claro como mock */
+  color: #111827;
+  font-size: 1.5rem;
+  /* text-2xl */
+  font-weight: 700;
+  transition: transform .06s ease, background-color .15s ease;
+}
+
+.w-\[360px\] form button[type="submit"]:hover {
+  background: #D1D5DB;
+  /* hover gris un poco más oscuro */
+}
+
+.w-\[360px\] form button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* 6) Botón pequeño “Volver” (type="button") */
+.w-\[360px\] form button[type="button"] {
+  height: 2.5rem;
+  /* h-10 */
+  width: 10rem;
+  /* w-40 */
+  border-radius: 9999px;
+  border: 1.5px solid #000;
+  background: #E5E7EB;
+  color: #111827;
+  font-size: 1.125rem;
+  /* text-lg */
+  font-weight: 600;
+  transition: transform .06s ease, background-color .15s ease;
+}
+
+.w-\[360px\] form button[type="button"]:hover {
+  background: #D1D5DB;
+}
+
+.w-\[360px\] form button[type="button"]:active {
+  transform: translateY(1px);
+}
+
+/* 7) Mensaje de error centrado, sin mover layout */
+.w-\[360px\] form .text-red-600 {
+  margin-top: .25rem;
+  text-align: center;
 }
