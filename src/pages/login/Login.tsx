@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-
-import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 type LoginProps = {
   onSubmit?: (payload: { login: string; password: string }) => Promise<void> | void;
 };
+
+
+// ✅ Importa el SVG como componente (Vite soporta ?react)
+import Logo from '../../assets/Logo';
+
 
 export default function Login({ onSubmit }: LoginProps) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,21 +36,21 @@ export default function Login({ onSubmit }: LoginProps) {
   };
 
   return (
-    <div className="min-h-dvh w-full bg-neutral-900 grid place-items-center p-4">
+    <div className="min-h-dvh w-full bg-white grid place-items-center p-4">
       <div className="login-sheet w-[360px] max-w-full bg-white">
         <form onSubmit={handleSubmit} className="login-body">
+          {/* Header: Logo + marca */}
           <div className="flex flex-col items-center">
-            <img
-                src={logo}
-                alt="MYCARE logo"
-                className="h-24 w-auto object-contain mb-6 md:h-28"  // antes: h-40
-                draggable={false}
-            />
-            <div className="tracking-[0.35em] text-xl font-semibold text-neutral-800">MYCARE</div>
+            {/* Tamaño y color del logo (usa currentColor en el SVG) */}
+            <Logo className="w-20 h-20 text-purple-600 mb-6" />
+            <div className="tracking-[0.35em] text-xl font-semibold text-neutral-800">
+              MYCARE
+            </div>
           </div>
 
+          {/* Campo User */}
           <div className="mt-20">
-            <label htmlFor="login" className="login-label">Login</label>
+            <label htmlFor="login" className="login-label">User</label>
             <input
               id="login"
               type="text"
@@ -56,6 +61,7 @@ export default function Login({ onSubmit }: LoginProps) {
             />
           </div>
 
+          {/* Campo Password */}
           <div className="mt-14">
             <label htmlFor="password" className="login-label">Password</label>
             <input
@@ -68,21 +74,36 @@ export default function Login({ onSubmit }: LoginProps) {
             />
           </div>
 
+          {/* Olvidaste tu contraseña */}
           <div className="text-center mt-12">
-            <button type="button" className="login-forgot">olvidaste tu contraseña</button>
+            <button type="button" className="login-forgot">
+              olvidaste tu contraseña
+            </button>
           </div>
 
-          {error && <div className="text-center text-[12px] text-red-600 mt-4">{error}</div>}
+          {/* Error */}
+          {error && (
+            <div className="text-center text-[12px] text-red-600 mt-4">
+              {error}
+            </div>
+          )}
 
+          {/* Botón Login */}
           <div className="flex justify-center mt-16">
             <button type="submit" disabled={loading} className="login-primary-btn">
               {loading ? "Ingresando…" : "Login"}
             </button>
           </div>
 
-          <div className="text-center mt-8">
-            <div className="text-sm text-neutral-400">No tengo cuenta</div>
-            <div className="mx-auto mt-4 h-2 w-28 rounded-full bg-neutral-300/80" />
+          {/* Botón Registrarse */}
+          <div className="flex justify-center mt-6">
+            <button
+              type="button"
+              onClick={() => navigate("/register")}
+              className="register-btn"
+            >
+              Registrarse
+            </button>
           </div>
         </form>
       </div>

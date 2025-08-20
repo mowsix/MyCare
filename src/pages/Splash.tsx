@@ -1,7 +1,7 @@
 // src/pages/Splash.tsx  (según tu ruta actual)
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";  // <-- ajusta si cambiaste la carpeta
+import logo from "../assets/logo.svg";  // <-- ajusta si cambiaste la carpeta
 
 export default function Splash() {
   const navigate = useNavigate();
