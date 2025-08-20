@@ -32,7 +32,7 @@ export default function Login({ onSubmit }: LoginProps) {
         if (!ok) throw new Error("Usuario o contraseña inválidos");
 
         // éxito → navega donde quieras
-        navigate("/"); // o a /dashboard si lo tienes
+        navigate("/home"); // o a /dashboard si lo tienes
       }
     } catch (err: any) {
       setError(err?.message || "No se pudo iniciar sesión");
@@ -74,9 +74,9 @@ export default function Login({ onSubmit }: LoginProps) {
           </div>
 
           <div className="text-center mt-12">
-            <button type="button" className="login-forgot">
+            <label className="login-forgot">
               olvidaste tu contraseña
-            </button>
+            </label>
           </div>
 
           {error && (
@@ -87,7 +87,7 @@ export default function Login({ onSubmit }: LoginProps) {
 
           <div className="flex justify-center mt-16">
             <button type="submit" disabled={loading} className="login-primary-btn">
-              {loading ? "Ingresando…" : "Login"}
+              {loading ? "Ingresando…" : "Login"}       
             </button>
           </div>
 
