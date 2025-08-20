@@ -3,10 +3,11 @@ export default function Logo(props: React.SVGProps<SVGSVGElement>) {
 
 <svg {...props} version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="844.000000pt" height="1280.000000pt" viewBox="0 0 844.000000 1280.000000"
- preserveAspectRatio="xMidYMid meet">
+ preserveAspectRatio="xMidYMid meet" >
 
 <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+fill="#B388EB" stroke="none">
+
 <path d="M4415 11180 c-11 -4 -33 -22 -49 -39 -26 -27 -28 -35 -23 -78 14
 -119 181 -423 336 -613 46 -57 189 -202 251 -256 52 -44 308 -227 429 -305 63
 -41 99 -70 91 -73 -8 -3 -39 -9 -67 -15 -78 -16 -173 -63 -216 -107 -73 -74

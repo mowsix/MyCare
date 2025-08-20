@@ -42,10 +42,7 @@ export default function Login({ onSubmit }: LoginProps) {
           {/* Header: Logo + marca */}
           <div className="flex flex-col items-center">
             {/* Tamaño y color del logo (usa currentColor en el SVG) */}
-            <Logo className="w-20 h-20 text-purple-600 mb-6" />
-            <div className="tracking-[0.35em] text-xl font-semibold text-neutral-800">
-              MYCARE
-            </div>
+            <Logo className="w-4 h-4 text-purple-600 mb-6" />
           </div>
 
           {/* Campo User */}
