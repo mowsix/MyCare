@@ -2,11 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aquí puedes meter utilidades personalizadas o animaciones globales */
+/* Animación que usamos en el Splash (si la necesitas) */
 @layer utilities {
   @keyframes loading {
     0% { transform: translateX(-100%); }
     60% { transform: translateX(120%); }
     100% { transform: translateX(120%); }
   }
+}
+
+@layer base {
+  :root { color-scheme: light; }     /* scrollbars y UI claras */
+  html, body { background: #ffffff; } /* fondo blanco global */
+  body { color: #B388EB; }            /* texto base gris oscuro */
+}
+
+/* ====== Estilos del Login (equivalentes al SCSS) ====== */
+@layer components {
+  /* “Hoja” con borde dorado interno */
+  .login-sheet {
+    box-shadow: inset 0 0 0 4px #f2c94c;
+  }
+
+  .login-body {
+    padding: 56px 28px 48px 28px;
+  }
+
+  .login-label {
+    display: block;
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .login-line-input {
+    appearance: none;
+    display: block;
+    width: 100%;
+    padding: 2px 0 4px 0;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid #ececec;
+    font-size: 16px;
+    outline: none;
+  }
+  .login-line-input:focus {
+    border-bottom-color: #ffffff;
+  }
+
+  .login-forgot {
+    background: transparent;
+    border: none;
+    color: #9ca3af; /* muted */
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .login-primary-btn {
+    width: 220px;
+    height: 56px;
+    border: 1.5px solid #1f2937; /* gris oscuro */
+    border-radius: 9999px;
+    background: #dddddd;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.06s ease;
+  }
+  .login-primary-btn:active { transform: translateY(1px); }
+  .login-primary-btn:disabled { opacity: .8; cursor: not-allowed; }
+
+
+  .register-btn {
+    @apply px-6 py-3 rounded-full border-2 border-purple-400 text-purple-600 font-semibold text-sm transition;
+  }
+  .register-btn:hover {
+    @apply bg-purple-100;
+  }
+
 }
