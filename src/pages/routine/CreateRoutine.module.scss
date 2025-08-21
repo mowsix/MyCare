@@ -4,181 +4,89 @@ $ink-900: #0f172a;
 $ink-800: #1f2937;
 $muted:   #64748b;
 $line:    #9aa4b1;
-$card:    #e9edf2;
 $card-2:  #f3f5f8;
 $white:   #ffffff;
 
 /* ======= Layout ======= */
-.wrap {
-  min-height: 100svh;
-  background: $white;
-}
-.container {
-  width: 100%;
-  max-width: $mobile-max;
-  margin: 0 auto;
-  padding: 24px 16px 100px; // espacio inferior extra
-}
+.wrap { min-height: 100svh; background: $white; }
+.container { width: 100%; max-width: $mobile-max; margin: 0 auto; padding: 24px 16px 100px; }
 
 /* ======= Título ======= */
-.h1 {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 800;
-  color: $ink-900;
-  margin-bottom: 18px;
-}
+.h1 { text-align: center; font-size: 28px; font-weight: 800; color: $ink-900; margin-bottom: 18px; }
 
 /* ======= Buscador ======= */
-.searchWrap {
-  position: relative;
-  margin-bottom: 24px;
-}
+.searchWrap { position: relative; margin-bottom: 12px; }
 .search {
-  width: 100%;
-  padding: 10px 40px 10px 12px;
-  border: 0;
-  border-bottom: 2px solid #cbd5e1;
-  font-size: 16px;
-  outline: none;
-  &:focus { border-bottom-color: #64748b; }
+  width: 100%; padding: 10px 40px 10px 12px;
+  border: 0; border-bottom: 2px solid #cbd5e1;
+  font-size: 16px; outline: none; &:focus { border-bottom-color: #64748b; }
 }
-.searchIcon {
-  position: absolute;
-  right: 8px; top: 6px;
-  width: 24px; height: 24px; color: $muted;
-}
+.searchIcon { position: absolute; right: 8px; top: 6px; width: 24px; height: 24px; color: $muted; }
 .addBtn {
-  margin-top: 10px;
-  width: 100%;
-  border-radius: 999px;
-  background: #e5e7eb;
-  border: 1px solid #cbd5e1;
-  color: $ink-900;
-  font-weight: 700;
-  padding: 10px 14px;
+  margin-top: 10px; width: 100%;
+  border-radius: 999px; background: #e5e7eb; border: 1px solid #cbd5e1;
+  color: $ink-900; font-weight: 700; padding: 10px 14px;
 }
 
-/* ======= Días ======= */
-.days {
-  margin-top: 10px;
-}
-.daysTitle {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 700;
-  color: $ink-800;
-  margin-bottom: 10px;
-}
-.dayRow {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-}
-.dayCell {
-  text-align: center;
-  font-size: 12px; color: $muted;
-  .box {
-    margin-top: 5px; width: 40px; height: 40px;
-    border-radius: 8px; background: #e5e7eb;
-  }
-  &.on .box { background: #64748b; }
-  &.on { color: #111827; }
-}
-
-/* ======= Hora ======= */
-.timeWrap {
-  margin-top: 20px;
-  background: $card-2;
-  border-radius: 16px;
-  padding: 16px;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-}
-.timeNum {
-  input {
-    width: 70px;
-    text-align: center;
-    font-size: 48px;
-    font-weight: 800;
-    color: $ink-800;
-    background: transparent;
-    border: none;
-    outline: none;
-  }
-}
-.timeSep {
-  font-size: 48px; font-weight: 800; color: $ink-800;
-}
-.mer {
-  margin-left: 6px;
-  display: grid; gap: 6px;
-  button {
-    padding: 4px 8px; font-size: 12px; border-radius: 6px;
-    border: 1px solid #cbd5e1; background: #e5e7eb; color: $ink-800;
-    &.on { background: #64748b; color: white; border-color: #64748b; }
-  }
-}
-
-/* ======= Lista provisional (lo que vas agregando) ======= */
-.listBox {
-  margin-top: 20px;
-  background: $card-2;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 10px 12px;
-}
-.item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 0;
-  & + & { border-top: 1px solid #e2e8f0; }
-}
-.cat {
-  font-size: 12px; font-weight: 700; color: $muted; background: #e2e8f0;
-  border-radius: 999px; padding: 2px 8px; margin-left: 10px;
-}
-.rm {
-  border: none; background: transparent; color: #9ca3af; cursor: pointer; font-weight: 700;
-}
+/* ======= Lista provisional ======= */
+.listBox { margin-top: 18px; background: $card-2; border: 1px solid #cbd5e1; border-radius: 12px; padding: 10px 12px; }
+.item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; & + & { border-top: 1px solid #e2e8f0; } }
+.cat { font-size: 12px; font-weight: 700; color: $muted; background: #e2e8f0; border-radius: 999px; padding: 2px 8px; margin-left: 10px; }
+.rm { border: none; background: transparent; color: #9ca3af; cursor: pointer; font-weight: 700; }
 
 /* ======= Guardar ======= */
-.saveBtn {
-  margin-top: 18px;
-  width: 100%;
-  border-radius: 999px;
-  font-weight: 800;
-  color: #111827;
-  padding: 12px 16px;
-  background: #e5e7eb;
-  border: 1px solid #cbd5e1;
-}
+.saveBtn { margin-top: 18px; width: 100%; border-radius: 999px; font-weight: 800; color: #111827; padding: 12px 16px; background: #e5e7eb; border: 1px solid #cbd5e1; }
 
 /* ======= Ilustración ======= */
-.illus {
-  display: grid; place-items: center;
-  margin-top: 18px;
-  img { width: 88px; height: 88px; object-fit: cover; border-radius: 12px; }
-}
+.illus { display: grid; place-items: center; margin-top: 18px;
+  img { width: 88px; height: 88px; object-fit: cover; border-radius: 12px; } }
 
-/* ======= Modal de categoría ======= */
-.modalMask {
-  position: fixed; inset: 0;
-  background: rgba(15,23,42,0.35);
-  display: grid; place-items: center;
-}
-.modalCard {
-  width: calc(min(320px, 90vw));
-  background: $white; border-radius: 14px; padding: 16px;
-  border: 1px solid #e2e8f0;
-}
+/* ======= Modal combinado (categoría + día + hora) ======= */
+.modalMask { position: fixed; inset: 0; background: rgba(15,23,42,0.35); display: grid; place-items: center; }
+.modalCard { width: calc(min(340px, 92vw)); background: $white; border-radius: 14px; padding: 16px; border: 1px solid #e2e8f0; }
 .modalTitle { font-weight: 800; color: $ink-900; margin-bottom: 8px; }
+.modalSub { color: $ink-800; font-weight: 700; margin: 12px 0 6px; }
+
+/* Categorías */
 .modalRow {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
   button {
     border: 1px solid #cbd5e1; background: #f8fafc; color: $ink-800;
-    padding: 8px; border-radius: 10px; font-weight: 700;
+    padding: 8px; border-radius: 10px; font-weight: 700; cursor: pointer;
     &:hover { background: #e2e8f0; }
   }
+  /* activo por data-attr */
+  button[data-active="true"] { background: #64748b; border-color: #64748b; color: white; }
 }
-.modalCancel {
-  margin-top: 10px; width: 100%; background: transparent; border: none; color: $muted; font-weight: 700;
+
+/* Días dentro del modal */
+.modalDayGrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.modalDay {
+  text-align: center; font-size: 12px; color: $muted; cursor: pointer; user-select: none;
+}
+.modalBox { margin-top: 4px; width: 36px; height: 36px; border-radius: 8px; background: #e5e7eb; margin-inline: auto; }
+
+/* activo por data-attr */
+.modalDay[data-on="true"] { color: #111827; }
+.modalDay[data-on="true"] .modalBox { background: #64748b; }
+
+/* Hora dentro del modal */
+.modalTimeRow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; }
+.modalNum input {
+  width: 64px; text-align: center; font-size: 36px; font-weight: 800;
+  color: $ink-800; background: transparent; border: none; outline: none;
+}
+.modalSep { font-size: 36px; font-weight: 800; color: $ink-800; }
+.modalMer { margin-left: 6px; display: grid; gap: 6px;
+  button { padding: 4px 8px; font-size: 12px; border-radius: 6px; cursor: pointer; border: 1px solid #cbd5e1; background: #e5e7eb; color: $ink-800; }
+  /* activo por data-attr */
+  button[data-active="true"] { background: #64748b; color: white; border-color: #64748b; }
+}
+
+/* Acciones del modal */
+.modalActions {
+  margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  button { padding: 10px 12px; border-radius: 10px; font-weight: 800; cursor: pointer; }
+  .cancel { background: transparent; border: 1px solid #cbd5e1; color: $muted; }
+  .confirm { background: #e5e7eb; border: 1px solid #cbd5e1; color: #111827; }
 }

@@ -6,7 +6,7 @@ import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register"; 
 import Home from "../../pages/home/Home";
 import Meds from "../../pages/meds/Meds";
-import Routine from "../../pages/routine/createRoutine";
+import Routine from "../../pages/routine/CreateRoutine";
 
 
 export const router = createBrowserRouter([
