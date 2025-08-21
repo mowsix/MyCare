@@ -26,43 +26,50 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-dvh w-full bg-white flex items-center justify-center">
+    <div className="auth-root">
       <div className="w-[360px] max-w-full bg-white">
         {/* Header: Logo + marca */}
         <div className="flex flex-col items-center">
           <Logo className="w-28 h-28 text-neutral-700" />
-          <div className="mt-2 tracking-[0.35em] text-2xl font-semibold text-neutral-700">
-            MYCARE
-          </div>
         </div>
-
         <form onSubmit={onSubmit} className="mt-16 space-y-6 px-6">
-          {/* Inputs grandes con borde gris (como el wireframe) */}
-          <input
-            className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
-            placeholder="Usuario"
-            autoComplete="username"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-          />
+          <div>
+            <label htmlFor="reg-user" className="login-label">Usuario</label>
+            <input
+              id="reg-user"
+              className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
+              placeholder=""
+              autoComplete="username"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="password"
-            className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
-            placeholder="Contraseña"
-            autoComplete="new-password"
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
-          />
+          <div>
+            <label htmlFor="reg-pass" className="login-label">Contraseña</label>
+            <input
+              id="reg-pass"
+              type="password"
+              className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
+              placeholder=""
+              autoComplete="new-password"
+              value={pass}
+              onChange={(e) => setPass(e.target.value)}
+            />
+          </div>
 
-          <input
-            type="password"
-            className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
-            placeholder="Confirmar Contraseña"
-            autoComplete="new-password"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-          />
+          <div>
+            <label htmlFor="reg-confirm" className="login-label">Confirmar contraseña</label>
+            <input
+              id="reg-confirm"
+              type="password"
+              className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
+              placeholder=""
+              autoComplete="new-password"
+              value={confirm}
+              onChange={(e) => setConfirm(e.target.value)}
+            />
+          </div>
 
           {error && (
             <div className="text-center text-sm text-red-600">{error}</div>
