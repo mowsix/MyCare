@@ -1,0 +1,33 @@
+$mobile-max: 375px;
+$ink-700: #334155;
+$ink-900: #0f172a;
+
+.nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: $mobile-max;
+  background: #ffffff;
+  border-top: 1px solid #d1d5db;
+  z-index: 50;
+
+  ul { display: grid; grid-template-columns: repeat(4, 1fr); }
+}
+
+.tab {
+  display: grid;
+  place-items: center;
+  padding: 12px 0;
+  text-decoration: none;
+
+  svg { width: 28px; height: 28px; color: $ink-700; }
+}
+
+.active {
+  background: #e5e7eb;
+  border-top: 2px solid $ink-900;
+
+  svg { color: $ink-900; }
+}

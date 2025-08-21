@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import s from "./Meds.module.scss";
 import Logo from "../../assets/Logo";
 import { useRoutine, formatTime } from "../../lib/routineStore";
+import BottomNav from "../../components/BottomNav";
 
 /* --------- Iconos (SVG inline, sin dependencias) ---------- */
 const HomeIcon = (p: React.SVGProps<SVGSVGElement>) => (
@@ -68,31 +69,8 @@ export default function Meds() {
         </Link>
       </div>
 
-      {/* Barra inferior */}
-      <nav className={s.nav} aria-label="Navegación inferior">
-        <ul>
-          <li>
-            <NavLink to="/home" className={({isActive}) => `${s.tab} ${isActive ? s.active : ""}`} end>
-              <HomeIcon />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/meds" className={({isActive}) => `${s.tab} ${isActive ? s.active : ""}`}>
-              <PillIcon />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile" className={({isActive}) => `${s.tab} ${isActive ? s.active : ""}`}>
-              <UserIcon />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/kit" className={({isActive}) => `${s.tab} ${isActive ? s.active : ""}`}>
-              <KitIcon />
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+      {/* Navegación inferior */}
+      <BottomNav />
     </div>
   );
 }
