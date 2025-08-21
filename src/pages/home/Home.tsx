@@ -101,12 +101,12 @@ export default function Home() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/profile" className={({isActive}) => isActive ? "active" : "" }>
+            <NavLink to="/kit" className={({isActive}) => isActive ? "active" : "" }>
               <UserIcon />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/kit" className={({isActive}) => isActive ? "active" : "" }>
+            <NavLink to="/skin" className={({isActive}) => isActive ? "active" : "" }>
               <KitIcon />
             </NavLink>
           </li>

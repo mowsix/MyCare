@@ -7,6 +7,7 @@ import Register from "../../pages/register/Register";
 import Home from "../../pages/home/Home";
 import Meds from "../../pages/meds/Meds";
 import Routine from "../../pages/routine/CreateRoutine";
+import Skin from "../../pages/skin/Skin";
 
 
 export const router = createBrowserRouter([
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "meds", element: <Meds /> },
       { path: "routine", element: <Routine /> },
+      { path: "skin", element: <Skin /> },
     ],
   },
 ]);
