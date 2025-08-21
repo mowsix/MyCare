@@ -47,7 +47,7 @@ export default function Login({ onSubmit }: LoginProps) {
         <form onSubmit={handleSubmit} className="login-body">
           {/* Logo y marca */}
           <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Logo className="w-20 h-20 text-purple-600 mb-2" />
+            <Logo className="w-10 h-10 text-purple-600 mb-2" />
           </div>
 
 

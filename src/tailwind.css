@@ -5,30 +5,30 @@
 /* ================== VARIABLES & BASE ================== */
 @layer base {
   :root {
-    /* Paleta Coolors */
     --pink-soft: #FDC5F5;
     --pink-accent: #F7AEF8;
     --lila: #B388EB;
-    /* primario */
     --lila-soft: #C2A0EF;
-    /* borde “hoja” / secundaria */
     --lila-muted: #CEB3F2;
-    /* textos/muted */
     --text: #000000;
-    /* buen contraste */
+
+    /* Ancho máximo responsive - se adapta mejor a diferentes pantallas */
+    --container-max: min(790px, 100vw);
   }
 
-  html,
-  body {
+  html, body {
     background: #ffffff;
-    /* mantén fondo blanco como wireframe */
     color: var(--text);
     min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
   }
 
-  /* Mejora enfoque accesible base */
   *:focus-visible {
     outline: 3px solid color-mix(in srgb, var(--pink-accent) 55%, transparent);
     outline-offset: 2px;
@@ -38,109 +38,122 @@
 /* ================== UTILITIES ================== */
 @layer utilities {
   @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    60% {
-      transform: translateX(120%);
-    }
-
-    100% {
-      transform: translateX(120%);
-    }
+    0% { transform: translateX(-100%); }
+    60% { transform: translateX(120%); }
+    100% { transform: translateX(120%); }
   }
 }
 
-/* ================== COMPONENTES ================== */
-@layer components {
-
-  /* ---- “Hoja” contenedora del login ---- */
-  .login-sheet {
-    width: 360px;
-    max-width: 92vw;
-    min-height: 560px;
-    /* borde interno con color de la paleta */
-    box-shadow:
-      inset 0 0 0 3px var(--lila-soft),
-      0 10px 24px rgba(179, 136, 235, 0.18);
-    border-radius: 1.25rem;
-    background: #fff;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* centra vertical */
-    align-items: center;
-    /* centra horizontal */
-    min-height: 80vh;
-    /* asegura que ocupe casi toda la pantalla */
-    padding: 2.25rem;
-    border-radius: 12px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .login-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    /* separación consistente entre elementos */
-    width: 100%;
-    text-align: center;
-    padding: 0;
-    /* el padding lo maneja .login-sheet */
-  }
+/* ================== LAYOUT GLOBAL (UNIFICA TODAS LAS VISTAS) ================== */
+/* El wrapper de auth y cualquier pantalla debe respetar el ancho del RootLayout */
+.auth-root {
+  position: relative;
+  inset: auto;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  min-height: 100dvh;
+  padding: 16px; /* Padding consistente */
+  width: 100%;
 }
 
+/* Tarjeta unificada (Login y Register) */
+.login-sheet,
+.w-\[360px\] {
+  width: 100% !important;
+  max-width: min(480px, calc(100vw - 32px)) !important; /* Más ancho en desktop */
+  min-height: min(640px, 92svh);
+  padding: 32px 24px;
+
+  border-radius: 20px;
+  background: #fff;
+  box-shadow:
+    inset 0 0 0 3px var(--lila-soft),
+    0 10px 24px rgba(179,136,235,0.18);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Contenido interno (formularios) – ancho útil mejorado */
+.login-body,
+.w-\[360px\] > form {
+  width: 100%;
+  max-width: 420px; /* Aumentado para mejor uso del espacio */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* Cualquier imagen/SVG dentro de áreas de auth: responsivo */
+.auth-root img, .auth-root svg,
+.login-sheet img, .login-sheet svg,
+.w-\[360px\] img, .w-\[360px\] svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Logo escalable */
+.login-sheet svg,
+.w-\[360px\] .flex:first-child svg {
+  width: clamp(120px, 30vw, 160px); /* Más grande en desktop */
+  max-height: 25vh;
+}
+
+/* ================== ESTILOS DE FORM (COMPARTIDOS) ================== */
 .login-label {
   display: block;
   color: black;
-  font-size: 14px;
-  margin-bottom: 6px;
+  font-size: 16px; /* Aumentado para mejor legibilidad */
+  margin-bottom: 8px;
   width: 100%;
-  max-width: 320px;
+  max-width: 400px;
 }
 
-/* Línea inferior tipo wireframe */
+/* Línea inferior tipo wireframe (Login) */
 .login-line-input {
   appearance: none;
   display: block;
   width: 100%;
-  max-width: 320px;
-  padding: 2px 0 6px 0;
+  max-width: 400px;
+  padding: 8px 0 10px 0; /* Más padding para mejor usabilidad */
   background: transparent;
   border: none;
   border-bottom: 2px solid #1f2937;
-  /* gris oscuro para contraste */
-  font-size: 16px;
+  font-size: 18px; /* Aumentado */
   outline: none;
   transition: border-color .15s ease, box-shadow .15s ease;
-  margin: 0%;
+  margin: 0;
 }
-
 .login-line-input:focus {
   border-bottom-color: var(--lila);
   box-shadow: 0 3px 0 0 var(--pink-accent);
 }
 
-.login-forgot {
-  background: transparent;
-  border: none;
-  font-size: 13px;
-  color: #6b7280;
-  cursor: pointer;
+/* Inputs regulares (Register) */
+input:not(.login-line-input).border {
+  border-color: var(--lila-muted) !important;
+  background: #fff;
+  transition: box-shadow .15s ease, border-color .15s ease;
+  min-height: 48px; /* Altura mínima consistente */
+}
+input:not(.login-line-input).border:focus {
+  border-color: var(--lila) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--pink-accent) 45%, transparent);
 }
 
-.login-forgot:hover {
-  color: var(--lila);
-}
-
-/* Botón principal (pill) */
-.login-primary-btn {
-  width: 220px;
+/* Botones */
+.login-primary-btn,
+.w-\[360px\] form button[type="submit"] {
+  width: 100%;
+  max-width: 380px; /* Aumentado */
   height: 56px;
   border-radius: 9999px;
   font-weight: 700;
@@ -153,390 +166,219 @@
   background: var(--lila);
   color: #000000;
   border: 2px solid var(--lila);
-  margin: 0%;
+  margin-top: 8px;
 }
-
-input {
-  color: black;
-  /* El texto que el usuario escribe */
-}
-
-.login-primary-btn:hover {
+.login-primary-btn:hover,
+.w-\[360px\] form button[type="submit"]:hover {
   background: color-mix(in srgb, var(--lila) 85%, black 15%);
   border-color: color-mix(in srgb, var(--lila) 85%, black 15%);
 }
-
-.login-primary-btn:active {
+.login-primary-btn:active,
+.w-\[360px\] form button[type="submit"]:active {
   transform: translateY(1px);
 }
+.login-primary-btn:disabled { opacity: .8; cursor: not-allowed; }
 
-.login-primary-btn:disabled {
-  opacity: .8;
-  cursor: not-allowed;
-}
-
-.login-container label {
-  color: black;
-}
-
-/* lo  que se ponga centrado el login  */
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  /* Centra horizontal */
-  align-items: center;
-  /* Centra vertical */
-  height: 100vh;
-  /* Ocupa toda la pantalla */
-}
-
-.login-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  /* Espacio entre los elementos */
-  padding: 30px;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Botón secundario del login (“Registrarse”) */
-.register-btn {
-  padding: 0.6rem 1.2rem;
+.register-btn,
+.w-\[360px\] form button[type="button"] {
+  width: 100%;
+  max-width: 280px;
   border-radius: 9999px;
+  padding: 0.8rem 1.5rem;
   font-weight: 600;
-  font-size: .95rem;
+  font-size: 1rem;
   border: 2px solid var(--lila-soft);
   color: var(--lila);
   background: transparent;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease;
-  margin: 0%;
 }
-
-.register-btn:hover {
+.register-btn:hover,
+.w-\[360px\] form button[type="button"]:hover {
   background: color-mix(in srgb, var(--pink-accent) 35%, white);
   border-color: var(--lila);
 }
 
-
-/* ================== OVERRIDES PARA EL REGISTER ================== */
-/* No podemos editar el TSX, así que ajustamos las utilidades usadas allí
-   para que coincidan con tu paleta y añadan un focus lindo. */
-
-/* Botón “Crear cuenta” (usa bg-purple-600) */
-.bg-purple-600 {
-  background-color: var(--lila) !important;
-  border-color: var(--lila) !important;
+.login-forgot {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  margin-top: 12px;
 }
+.login-forgot:hover { color: var(--lila); }
 
-.bg-purple-600:hover {
-  background-color: color-mix(in srgb, var(--lila) 85%, black 15%) !important;
-}
+input { color: black; }
 
-/* Botón contorneado “Volver a Login” (usa border-purple-400 + text-purple-600) */
-.border-purple-400 {
-  border-color: var(--lila-soft) !important;
-}
+/* ================== OVERRIDES PARA REGISTER ================== */
+.text-neutral-800 { color: var(--lila) !important; }
+.border { border-color: var(--lila-soft) !important; }
+.shadow { box-shadow: 0 10px 24px rgba(179, 136, 235, 0.18) !important; }
+.rounded-xl { border-radius: 1.25rem !important; }
 
-.text-purple-600 {
-  color: var(--lila) !important;
-}
+.bg-purple-600 { background-color: var(--lila) !important; border-color: var(--lila) !important; }
+.bg-purple-600:hover { background-color: color-mix(in srgb, var(--lila) 85%, black 15%) !important; }
+.border-purple-400 { border-color: var(--lila-soft) !important; }
+.text-purple-600 { color: var(--lila) !important; }
+.bg-purple-100 { background-color: color-mix(in srgb, var(--pink-accent) 35%, white) !important; }
 
-.bg-purple-100 {
-  background-color: color-mix(in srgb, var(--pink-accent) 35%, white) !important;
-}
-
-/* Inputs del Register (tienen clases: w-full border rounded px-3 py-2)
-   Mejoramos color de borde y focus sin tocar el login (que usa .login-line-input). */
-input:not(.login-line-input).border {
-  border-color: var(--lila-muted) !important;
-  background: #fff;
-  transition: box-shadow .15s ease, border-color .15s ease;
-}
-
-input:not(.login-line-input).border:focus {
-  border-color: var(--lila) !important;
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--pink-accent) 45%, transparent);
-}
-
-/* Títulos/textos en tarjetas del Register */
-.text-neutral-800 {
-  color: var(--lila) !important;
-}
-
-/* Bordes/sombras de la tarjeta del Register para que combine */
-.border {
-  border-color: var(--lila-soft) !important;
-}
-
-.shadow {
-  box-shadow: 0 10px 24px rgba(179, 136, 235, 0.18) !important;
-}
-
-.rounded-xl {
-  border-radius: 1.25rem !important;
-}
-
-/* ===== Ajustes SOLO para la vista de Register 
-
-/* 1) Card central (el div que tiene w-[360px]) */
+/* Ajustes para Register */
 .w-\[360px\] {
   border-radius: 1.25rem;
-  /* borde interno sutil como hoja */
   box-shadow: inset 0 0 0 3px var(--lila-soft), 0 10px 24px rgba(179, 136, 235, .14);
 }
 
-/* 2) Marca “MYCARE” (la tienes con tracking y text-neutral-700) */
-.text-neutral-700 {
-  color: var(--text) !important;
-}
+.text-neutral-700 { color: var(--text) !important; }
 
-/* 3) Inputs grandes de Register (tus 3 inputs del formulario) */
 .w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl {
   border-color: hsl(293, 27%, 56%) !important;
-  /* gris del wireframe */
   background: #fff;
   color: #000;
-  /* lo que escribes, negro */
   transition: box-shadow .15s ease, border-color .15s ease;
+  min-height: 56px; /* Altura consistente */
 }
-
-.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl::placeholder {
-  color: #ab6ca6;
-  /* placeholder gris */
+.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl::placeholder { 
+  color: #ab6ca6; 
 }
-
-.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2l:focus,
 .w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl:focus {
   border-color: var(--lila) !important;
-  /* enfoque con la paleta */
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--pink-accent) 40%, transparent);
   outline: none;
 }
 
-/* 4) Contenedores de botones → centrados como en el wireframe */
-.w-\[360px\] form>.flex {
-  justify-content: center !important;
-}
+.w-\[360px\] form > .flex { justify-content: center !important; }
+.w-\[360px\] form .text-red-600 { margin-top: .5rem; text-align: center; }
 
-/* 5) Botón grande “Registrarse” (type="submit") */
-.w-\[360px\] form button[type="submit"] {
-  height: 4rem;
-  /* h-16 */
-  width: 18rem;
-  /* w-72 */
-  border-radius: 9999px;
-  border: 1.5px solid #fffcfc;
-  /* borde negro como mock */
-  background: var(--lila);
-  /* gris claro como mock */
-  color: #111827;
-  font-size: 1.5rem;
-  /* text-2xl */
-  font-weight: 700;
-  transition: transform .06s ease, background-color .15s ease;
-}
-
-.w-\[360px\] form button[type="submit"]:hover {
-  background: var(--lila-muted);
-  /* hover gris un poco más oscuro */
-}
-
-.w-\[360px\] form button[type="submit"]:active {
-  transform: translateY(1px);
-}
-
-/* 6) Botón pequeño “Volver” (type="button") */
-.w-\[360px\] form button[type="button"] {
-  height: 2.5rem;
-  /* h-10 */
-  width: 10rem;
-  /* w-40 */
-  border-radius: 9999px;
-  border: 2px solid var(--pink-soft);
-  background: transparent;
-  color: var(--lila);
-  font-size: .95rem;
-  /* text-lg */
-  font-weight: 600;
-  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
-}
-
-.w-\[360px\] form button[type="button"]:hover {
-  background: #D1D5DB;
-}
-
-.w-\[360px\] form button[type="button"]:active {
-  transform: translateY(1px);
-}
-
-/* 7) Mensaje de error centrado, sin mover layout */
-.w-\[360px\] form .text-red-600 {
-  margin-top: .25rem;
-  text-align: center;
-}
-
-/* ajustes del centrado  */
-
-/* ============== CENTRADO GLOBAL DEL CARD/FORM ============== */
-/* Asegura que el contenido dentro del card de 360px quede centrado */
-.w-\[360px\]>form,
-.login-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* centra horizontalmente */
-  justify-content: center;
-  /* centra vertical del contenido interno si aplica */
-  text-align: center;
-  gap: 1rem;
-  /* separación consistente entre filas */
-}
-
-/* Cada grupo (label + input) ocupa el ancho pero centrado visualmente */
-.w-\[360px\]>form>div,
-.login-body>div {
-  width: 100%;
-  max-width: 320px;
-  /* limita ancho para que se vea centrado en mobile */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Etiquetas centradas (sobre cada input) */
-.login-label {
-  display: block;
-  text-align: center;
-  /* muestra la label centrada sobre el input */
-  margin-bottom: 8px;
-}
-
-/* Inputs mantienen su ancho pero se alinean al centro por el contenedor */
-.w-full.rounded-md,
-.login-line-input {
-  width: 100%;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Asegura que el logo + marca también estén centrados */
-.w-\[360px\]>.flex:first-child,
-.login-body>.flex:first-child {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ============== SEPARACIÓN ENTRE BOTONES EN REGISTER ============== */
-/* Botón principal (Registrarse) */
-.w-\[360px\] form button[type="submit"] {
-  margin-bottom: 18px;
-  /* separa el botón principal del botón "Volver" */
-}
-
-/* Botón secundario (Volver) — un poco de margen arriba adicional para garantizar separación */
-.w-\[360px\] form button[type="button"] {
-  margin-top: 6px;
-}
-
-/* Si quieres que los botones estén exactamente centrados y con la misma anchura visual */
-.w-\[360px\] form button[type="submit"],
-.w-\[360px\] form button[type="button"],
-.login-primary-btn,
-.register-btn {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* --- registro centrado --- */
-
-/* --- Forzar centrado absoluto del área de auth --- */
-/* Esto evita interferencias si tu layout padre tiene columnas/sidebars */
-.auth-root {
-  position: fixed;
-  /* asegura que cubra todo el viewport */
-  inset: 0;
-  /* top:0; right:0; bottom:0; left:0; */
-  display: grid;
-  place-items: center;
-  /* centra horizontal y vertical */
-  background: #fff;
-  z-index: 50;
-  /* por si hay elementos superpuestos */
-  padding: 1rem;
-}
-
-/* Card (asegura que no se mueva a la izquierda) */
-.login-sheet {
-  width: 360px;
-  max-width: 92vw;
-  min-height: 560px;
-  box-shadow:
-    inset 0 0 0 3px var(--lila-soft),
-    0 10px 24px rgba(179, 136, 235, 0.18);
-  border-radius: 1.25rem;
-  background: #fff;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 2.25rem;
-  overflow: hidden;
-  /* evita que el logo “desborde” */
-}
-
-/* Asegura que cualquier imagen o svg dentro del card no crezca más del ancho */
-.login-sheet img,
-.login-sheet svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Si tu Logo es un componente svg muy grande: limitar tamaño */
-.login-sheet .logo-wrapper,
-.login-sheet .logo {
-  width: 140px;
-  /* ajusta según tu preferencia */
-  height: auto;
-  max-height: 180px;
-  /* evita que empuje layout vertical */
-}
-
-/* Ajuste para el contenido interno */
-.login-body {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  padding: 0;
-}
-
-/* Seguridad: reset de margin del body (por si otro CSS lo alteró) */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-/* MEDIA: si la pantalla es muy alta, reducir márgenes internos */
-@media (max-height: 640px) {
-  .login-sheet {
-    padding: 1.25rem;
-    min-height: auto;
+/* ============== RESPONSIVE ============== */
+@media (min-width: 768px) {
+  .auth-root {
+    padding: 32px;
+  }
+  
+  .login-sheet,
+  .w-\[360px\] {
+    max-width: min(520px, calc(100vw - 64px)) !important;
+    padding: 40px 32px;
+  }
+  
+  .login-body,
+  .w-\[360px\] > form {
+    max-width: 450px;
+    gap: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .login-line-input { 
+    max-width: 320px;
+    font-size: 16px;
+  }
+
+  .w-\[360px\] input.w-full.rounded-md.border-2.border-gray-400.px-6.py-4.text-2xl {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .login-primary-btn,
+  .w-\[360px\] form button[type="submit"] {
+    height: 52px;
+    font-size: 1rem;
+    max-width: 320px;
+  }
+  
+  .login-sheet,
+  .w-\[360px\] {
+    padding: 24px 16px;
+    margin: 8px;
+  }
+}
+
+/* ================== ESTILOS HOME ================== */
+@layer base {
+  body {
+    min-height: max(884px, 100dvh); /* asegura alto mínimo tipo mobile */
+  }
+}
+
+@layer components {
+  /* Contenedor centrado tipo móvil */
+  .home-container {
+    width: 100%;
+    max-width: 28rem; /* max-w-md */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem;
+  }
+
+  /* Tarjetas recordatorios */
+  .reminder-card {
+    background-color: #e5e7eb; /* bg-gray-200 */
+    border: 1px solid #9ca3af; /* border-gray-400 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 1rem; /* p-4 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .reminder-card-title {
+    font-size: 1.125rem; /* text-lg */
+    color: #374151; /* text-gray-800 */
+  }
+
+  .reminder-card-time {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    color: #374151; /* text-gray-800 */
+  }
+
+  /* Caja resumen (2 filas) */
+  .summary-box {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    border: 1px solid #9ca3af; /* border-gray-400 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 1rem; /* p-4 */
+    margin-bottom: 2rem; /* mb-8 */
+  }
+
+  /* Botón calendario */
+  .calendar-chip {
+    background-color: #e5e7eb; /* bg-gray-200 */
+    border: 2px solid #9ca3af; /* border-2 border-gray-400 */
+    border-radius: 0.5rem; /* rounded-lg */
+    padding: 0.5rem; /* p-2 */
+    text-align: center;
+    width: 4rem; /* w-16 */
+  }
+
+  /* Footer navbar */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff; /* bg-white */
+    border-top: 1px solid #d1d5db; /* border-t border-gray-300 */
+  }
+  .bottom-nav ul {
+    max-width: 28rem; /* max-w-md */
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* grid grid-cols-4 */
+  }
+  .bottom-nav button,
+  .bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem;
+  }
+  .bottom-nav a.active {
+    background-color: #d1d5db; /* bg-gray-300 */
+  }
+}
+

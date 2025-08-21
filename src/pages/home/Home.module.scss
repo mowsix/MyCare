@@ -1,0 +1,193 @@
+/* ======= Tokens (ajustados al look del mock) ======= */
+$mobile-max: 375px;
+$ink-900: #0f172a;     // texto principal
+$ink-800: #1f2937;
+$ink-700: #334155;
+$muted:    #64748b;
+$line:     #9aa4b1;    // bordes suaves
+$card:     #e9edf2;    // tarjetas grises
+$card-2:   #f3f5f8;    // caja resumen
+$white:    #ffffff;
+
+/* ======= Layout base ======= */
+.wrap {
+  position: relative;
+  min-height: 100svh;
+  background: $white;
+  padding-bottom: 88px; // espacio para la barra fija
+}
+
+.container {
+  width: 100%;
+  max-width: $mobile-max;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ======= Header ======= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 16px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.bell {
+  width: 24px;
+  height: 24px;
+  color: $ink-800;
+}
+
+/* ======= Título ======= */
+.title {
+  margin: 8px 0 12px;
+  padding: 0 4px;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: $ink-900;
+}
+
+/* ======= Caja resumen (2 filas) ======= */
+.summary {
+  background: $card-2;
+  border: 2px solid $line;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  color: $ink-800;
+
+  & + & {
+    border-top: 1px solid #d6dbe2;
+  }
+}
+
+.summaryTime {
+  font-weight: 700;
+  color: $ink-800;
+}
+
+/* ======= Tarjeta de recordatorio ======= */
+.card {
+  margin-top: 18px;
+  background: $card;
+  border: 2px solid $line;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconPair {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iconCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: $white;
+  border: 2px solid $ink-700;
+  color: $ink-700;
+  display: grid;
+  place-items: center;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.cardTitle {
+  font-size: 18px;
+  color: $ink-800;
+}
+
+.cardTime {
+  font-size: 18px;
+  font-weight: 800;
+  color: $ink-800;
+}
+
+/* ======= Chip de calendario ======= */
+.calendar {
+  position: absolute;
+  right: 16px;
+  bottom: 110px; // por encima de la barra
+  width: 56px;
+  border-radius: 12px;
+  background: $card-2;
+  border: 2px solid $line;
+  text-align: center;
+  padding: 8px 6px;
+
+  .day {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+    color: $ink-900;
+  }
+  .mon {
+    margin-top: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    color: $muted;
+  }
+}
+
+/* ======= Barra de navegación inferior ======= */
+.nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: $mobile-max;
+  background: $white;
+  border-top: 1px solid #d1d5db;
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  a, button {
+    display: grid;
+    place-items: center;
+    padding: 12px 0;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      color: $ink-800;
+    }
+  }
+
+  .active {
+    background: #e2e8f0;
+  }
+}
+
+/* ======= Helpers ======= */
+.sep { height: 12px; }

@@ -30,7 +30,7 @@ export default function Register() {
       <div className="w-[360px] max-w-full bg-white">
         {/* Header: Logo + marca */}
         <div className="flex flex-col items-center">
-          <Logo className="w-28 h-28 text-neutral-700" />
+          <Logo className="w-10 h-10 text-neutral-200" />
         </div>
         <form onSubmit={onSubmit} className="mt-16 space-y-6 px-6">
           <div>
