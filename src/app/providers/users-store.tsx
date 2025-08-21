@@ -4,26 +4,39 @@ type User = { username: string; password: string };
 
 type UsersContextValue = {
   users: User[];
-  register: (username: string, password: string) => void; // agrega usuario
-  validate: (username: string, password: string) => boolean; // valida credenciales
+  register: (username: string, password: string) => void;
+  validate: (username: string, password: string) => boolean;
 };
 
 const UsersContext = createContext<UsersContextValue | null>(null);
 const STORAGE_KEY = "mc_users_v1";
 
+const DEFAULT_USER = { username: "yo", password: "yo" };
+
 export function UsersProvider({ children }: { children: React.ReactNode }) {
   const [users, setUsers] = useState<User[]>([]);
 
-  // Cargar desde localStorage al iniciar
+  // Cargar desde localStorage al iniciar y agregar usuario por defecto
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
+    let initialUsers: User[] = [];
     if (raw) {
       try {
         const parsed: User[] = JSON.parse(raw);
-        setUsers(Array.isArray(parsed) ? parsed : []);
+        initialUsers = Array.isArray(parsed) ? parsed : [];
       } catch {
-        setUsers([]);
+        initialUsers = [];
       }
+    }
+
+    const defaultUserExists = initialUsers.some(
+      (user) => user.username === DEFAULT_USER.username
+    );
+
+    if (!defaultUserExists) {
+      setUsers([DEFAULT_USER, ...initialUsers]);
+    } else {
+      setUsers(initialUsers);
     }
   }, []);
 

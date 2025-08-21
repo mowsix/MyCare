@@ -1,0 +1,115 @@
+/* ======= Tokens ======= */
+$mobile-max: 375px;
+$ink-900: #0f172a;
+$ink-800: #1f2937;
+$ink-700: #334155;
+$muted:   #64748b;
+$line:    #cbd5e1;
+$white:   #ffffff;
+
+/* ======= Layout ======= */
+.wrap {
+  position: relative;
+  min-height: 100svh;
+  background: $white;
+  padding-bottom: 88px; // espacio para la barra fija
+}
+.container {
+  width: 100%;
+  max-width: $mobile-max;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ======= Header ======= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.left { display: flex; align-items: center; gap: 12px; }
+.logo { width: 40px; height: 40px; }
+.titleTop {
+  font-size: 28px; /* similar al mock mobile */
+  font-weight: 800;
+  line-height: 1.05;
+  color: $ink-900;
+}
+.hairIcon { width: 28px; height: 28px; color: $ink-800; }
+
+/* ======= Sección ======= */
+.h2 {
+  margin: 16px 0 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #4b5563; /* gray-600 */
+}
+
+/* ======= Lista de productos (botones grises) ======= */
+.list { display: grid; gap: 12px; }
+.itemBtn {
+  width: 100%;
+  text-align: left;
+  background: #e5e7eb; /* gray-200 */
+  color: #1f2937;      /* gray-800 */
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 18px;
+  display: block;
+}
+
+/* ======= Crear rutina ======= */
+.createBtn {
+  width: 100%;
+  margin-top: 8px;
+  background: #f3f4f6;   /* gray-100 */
+  color: #6b7280;        /* gray-500 */
+  border: 1px solid #d1d5db; /* gray-300 */
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none;
+}
+
+/* ======= Consejos ======= */
+.tipsWrap { margin-top: 18px; }
+.tipsBtn {
+  width: 100%;
+  background: #e5e7eb;
+  color: #1f2937;
+  padding: 16px;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 700;
+  border: none;
+}
+
+/* ======= Barra de navegación inferior ======= */
+.nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: $mobile-max;
+  background: #ffffff;
+  border-top: 1px solid #d1d5db;
+  ul { display: grid; grid-template-columns: repeat(4, 1fr); }
+}
+.tab {
+  display: grid; place-items: center;
+  padding: 12px 0;
+  text-decoration: none;
+  svg { width: 28px; height: 28px; color: $ink-700; }
+}
+.active {
+  background: #e5e7eb;
+  border-top: 2px solid $ink-900;
+  svg { color: $ink-900; }
+}
+
+.card { width: 100%;}

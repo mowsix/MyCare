@@ -8,6 +8,7 @@ import Home from "../../pages/home/Home";
 import Meds from "../../pages/meds/Meds";
 import Routine from "../../pages/routine/CreateRoutine";
 import Skin from "../../pages/skin/Skin";
+import Hair from "../../pages/hair/Hair";
 
 
 export const router = createBrowserRouter([
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
       { path: "meds", element: <Meds /> },
       { path: "routine", element: <Routine /> },
       { path: "skin", element: <Skin /> },
+      { path: "hair", element: <Hair /> },
     ],
   },
 ]);
