@@ -1,10 +1,13 @@
 // src/app/routes/index.tsx
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layout/RootLayout";
-import Splash from "../../pages/Splash";          // <-- OJO: sin .tsx si tu bundler resuelve
-import Login from "../../pages/login/Login";      //     (puede ir con .tsx si prefieres)
+import Splash from "../../pages/Splash";          
+import Login from "../../pages/login/Login";      
 import Register from "../../pages/register/Register"; 
 import Home from "../../pages/home/Home";
+import Meds from "../../pages/meds/Meds";
+import Routine from "../../pages/routine/createRoutine";
+
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +18,8 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "home", element: <Home /> },
+      { path: "meds", element: <Meds /> },
+      { path: "routine", element: <Routine /> },
     ],
   },
 ]);

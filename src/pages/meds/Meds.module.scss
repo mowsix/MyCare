@@ -1,0 +1,155 @@
+/* ======= Tokens ======= */
+$mobile-max: 375px;
+$ink-900: #0f172a;
+$ink-800: #1f2937;
+$ink-700: #334155;
+$muted:   #64748b;
+$line:    #9aa4b1;
+$card:    #e9edf2;  // tarjetas grises
+$card-2:  #f3f5f8;  // fondos suaves
+$white:   #ffffff;
+
+/* ======= Layout ======= */
+.wrap {
+  position: relative;
+  min-height: 100svh;
+  background: $white;
+  padding-bottom: 88px; // espacio para la barra fija
+}
+
+.container {
+  width: 100%;
+  max-width: $mobile-max; // 375px (ajústalo si quieres 393px)
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ======= Header ======= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.titleTop {
+  font-size: 28px;
+  font-weight: 700;
+  color: $ink-900;
+  line-height: 1.1;
+}
+
+.pillBig {
+  width: 30px;
+  height: 30px;
+  color: $ink-800;
+}
+
+/* ======= Título central ======= */
+.h2 {
+  margin: 16px 0 16px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: $ink-900;
+}
+
+/* ======= Caja de lista ======= */
+.listBox {
+  background: $card;
+  border: 2px solid $line;
+  border-radius: 12px;
+  padding: 24px 16px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  text-align: center;
+  font-size: 18px;
+  color: $ink-800;
+}
+
+/* ======= Botón Crear Rutina ======= */
+.createBtn {
+  margin-top: 18px;
+  width: 100%;
+  background: $white;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 18px;
+  color: $ink-900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.plusWrap {
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+}
+
+.plus {
+  width: 24px;
+  height: 24px;
+  color: #64748b;
+}
+
+/* ======= Barra de navegación inferior ======= */
+.nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: $mobile-max;
+  background: #f1f5f9; // gray-100
+  border-top: 1px solid #d1d5db;
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tab {
+  display: grid;
+  place-items: center;
+  padding: 12px 0;
+  text-decoration: none;
+
+  svg {
+    width: 28px;
+    height: 28px;
+    color: $ink-700;
+  }
+}
+
+.active {
+  background: #e2e8f0;
+  border-top: 2px solid $ink-900;
+
+  svg {
+    color: $ink-900;
+  }
+}
