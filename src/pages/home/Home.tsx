@@ -7,27 +7,29 @@ import BottomNav from "../../components/BottomNav";
 
 /* -------------------------- ICONOS INLINE (SVG) -------------------------- */
 const BellIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm8-6V11a8 8 0 1 0-16 0v5l-2 2v1h20v-1l-2-2Z"/></svg>
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm8-6V11a8 8 0 1 0-16 0v5l-2 2v1h20v-1l-2-2Z" /></svg>
 );
 const PillIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M4 12a5 5 0 0 0 8 4l-7-7a4.98 4.98 0 0 0-1 3Zm9-4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-6.5.5 7 7"/></svg>
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M4 12a5 5 0 0 0 8 4l-7-7a4.98 4.98 0 0 0-1 3Zm9-4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-6.5.5 7 7" /></svg>
 );
 const UserIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5v1h18v-1c0-2.5-4-5-9-5Z"/></svg>
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5v1h18v-1c0-2.5-4-5-9-5Z" /></svg>
 );
 const KitIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3H3V8a2 2 0 0 1 2-2h3Zm2-2h4v2h-4V4Zm-7 9h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7Zm9 1h2v3h3v2h-3v3h-2v-3H7v-2h5v-3Z"/></svg>
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3H3V8a2 2 0 0 1 2-2h3Zm2-2h4v2h-4V4Zm-7 9h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7Zm9 1h2v3h3v2h-3v3h-2v-3H7v-2h5v-3Z" /></svg>
 );
 const SpoonIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M10 2a6 6 0 0 0-6 6c0 2.2 1.2 4.1 3 5.1V21a1 1 0 0 0 2 0v-7.9c1.8-1 3-2.9 3-5.1a6 6 0 0 0-2-4Z"/></svg>
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M10 2a6 6 0 0 0-6 6c0 2.2 1.2 4.1 3 5.1V21a1 1 0 0 0 2 0v-7.9c1.8-1 3-2.9 3-5.1a6 6 0 0 0-2-4Z" /></svg>
 );
 
 /* ------------------------- Card reutilizable ------------------------ */
 type IconKind = "kit+spoon" | "pill" | "user";
-type CardProps = { title: string; time: string; icon: IconKind };
-function ReminderCard({ title, time, icon }: CardProps) {
+type CategoryClass = "pill" | "skin" | "hair";
+type CardProps = { title: string; time: string; icon: IconKind; catClass: CategoryClass };
+
+function ReminderCard({ title, time, icon, catClass }: CardProps) {
   return (
-    <div className={s.card}>
+    <div className={`${s.card} ${s[catClass]}`}>
       <div className={s.left}>
         <div className={s.iconPair}>
           {icon === "kit+spoon" && (
@@ -52,7 +54,7 @@ function minutesOfDay(hour: number, minute: number, mer: "AM" | "PM") {
   const h24 = mer === "PM" ? h12 + 12 : h12;
   return h24 * 60 + minute;
 }
-const MONTHS_ES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+const MONTHS_ES = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
 
 /* ---------------------------------- HOME --------------------------------- */
 export default function Home() {
@@ -70,6 +72,9 @@ export default function Home() {
 
   // Top 2 para el resumen
   const summary = todays.slice(0, 2);
+  const summaryIds = new Set(summary.map(s => s.id));
+  const remaining = todays.filter(it => !summaryIds.has(it.id));
+
 
   // Icono según categoría
   const iconFor = (cat: "pastillas" | "piel" | "cabello"): IconKind => {
@@ -78,33 +83,59 @@ export default function Home() {
     return "kit+spoon"; // cabello
   };
 
+  //CategoryClass según categoría
+
+  const classFor = (cat: "pastillas" | "piel" | "cabello"): CategoryClass => {
+    if (cat === "pastillas") return "pill";
+    if (cat === "piel") return "skin";
+    return "hair";
+  };
+
+  // Icono pequeño según categoría (para el resumen)
+  const SmallIcon = ({ cat }: { cat: "pastillas" | "piel" | "cabello" }) => {
+    const kind = iconFor(cat);
+    const sizeProps = { style: { width: 18, height: 18 } } as React.SVGProps<SVGSVGElement>;
+    if (kind === "pill") return <PillIcon {...sizeProps} />;
+    if (kind === "user") return <UserIcon {...sizeProps} />;
+    return <KitIcon {...sizeProps} />;
+  };
+
   // Chip calendario dinámico
   const day = String(now.getDate()).padStart(2, "0");
   const mon = MONTHS_ES[now.getMonth()];
 
   return (
     <div className={s.wrap}>
-      <div className={s.container}>
-        {/* Header */}
-        <header className={s.header}>
+      {/*} <div className={s.container}>*/}
+      {/* Header */}
+      <header className={s.header}>
+        <div className={s.headerInner}>
           <Logo className={s.logo} />
           <button aria-label="Notificaciones"><BellIcon className={s.bell} /></button>
-        </header>
+        </div>
+      </header>
 
+      <div className={s.container}>
         {/* Título */}
-        <h1 className={s.title}>Próximos recordatorios</h1>
+        <div className={s.titleRow}>
+          <h1 className={s.title}>Próximos recordatorios</h1>
+          <span className={s.badgeToday}>Hoy</span>
+        </div>
 
         {/* Caja resumen */}
         <section className={s.summary}>
           {summary.length === 0 ? (
             <div className={s.summaryRow}>
-              <div>No hay recordatorios para hoy</div>
+              <div className={s.summaryName}>No hay recordatorios para hoy</div>
               <div className={s.summaryTime}>—</div>
             </div>
           ) : (
             summary.map((it) => (
               <div key={it.id} className={s.summaryRow}>
-                <div>{it.name}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span className={s.iconSmall}><SmallIcon cat={it.category} /></span>
+                  <div className={s.summaryName}>{it.name}</div>
+                </div>
                 <div className={s.summaryTime}>{formatTime(it.hour, it.minute, it.meridiem)}</div>
               </div>
             ))
@@ -112,24 +143,29 @@ export default function Home() {
         </section>
 
         {/* Tarjetas del día */}
-        {todays.map((it) => (
+        {remaining.map((it) => (
           <ReminderCard
             key={it.id}
             title={it.name}
             time={formatTime(it.hour, it.minute, it.meridiem)}
             icon={iconFor(it.category)}
+            catClass={classFor(it.category)}
           />
         ))}
       </div>
 
       {/* Chip calendario */}
       <Link to="/calendar" className={s.calendar} aria-label="Abrir calendario">
-        <div className="day" style={{fontWeight:900}}>{day}</div>
+        <div className="day" style={{ fontWeight: 900 }}>{day}</div>
         <div className="mon">{mon}</div>
       </Link>
 
       {/* Barra de navegación unificada */}
-      <BottomNav />
+      <div className={s.navContainer}>
+        <div className={s.navWrapper}>
+          <BottomNav />
+        </div>
+      </div>
     </div>
   );
 }

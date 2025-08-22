@@ -1,95 +1,221 @@
-/* ======= Tokens (ajustados al look del mock) ======= */
-$mobile-max: 375px;
-$ink-900: #0f172a;     // texto principal
+/* ======= Palette (coolors) ======= */
+$rose-100: #fdc5f5; // rosa
+$magenta-100: #f7aef8; // magenta claro
+$violet-200: #c2a0ef; // violeta claro
+$lavender-200: #ceb3f2; // lavanda
+$purple-300: #b388eb; // púrpura medio
+
+/* ======= Neutrales accesibles ======= */
+$ink-900: #0f172a; // texto principal
 $ink-800: #1f2937;
 $ink-700: #334155;
-$muted:    #64748b;
-$line:     #9aa4b1;    // bordes suaves
-$card:     #e9edf2;    // tarjetas grises
-$card-2:   #f3f5f8;    // caja resumen
-$white:    #ffffff;
+$muted: #64748b;
+$line: rgba(16, 24, 40, .12);
+$white: #ffffff;
+
+/* ======= Superficies ======= */
+$bg: #fff;
+/* fondo limpio para contraste */
+$surface: #faf8ff;
+/* muy leve tinte lila */
+$card: rgba(255, 255, 255, .7);
+
+/* ======= Helpers ======= */
+$mobile-max: 375px;
+$radius-xl: 16px;
+$shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
+$shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
 
 /* ======= Layout base ======= */
 .wrap {
   position: relative;
   min-height: 100svh;
-  background: $white;
-  padding-bottom: 88px; // espacio para la barra fija
+  background: $bg;
+  padding-bottom: 10px;
 }
 
 .container {
   width: 100%;
   max-width: $mobile-max;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 8px 16px 20px;
 }
 
 /* ======= Header ======= */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+  background:
+    linear-gradient(180deg, rgba(253, 197, 245, .65), rgba(206, 179, 242, .40)),
+    $surface;
+  border-bottom: 1px solid $line;
+  box-shadow: $purple-300;
+}
+
+.headerInner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0 16px;
+  padding: 18px 16px;
+  max-width: $mobile-max;
+  margin: 0 auto;
 }
+
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  box-shadow: 0 6px 18px rgba(198, 120, 243, 0.427);
+  padding: 6px;
+  /* si tu SVG tiene espacio */
+  border: 1px solid rgba(16, 24, 40, .06);
 }
 
+
+
+/* Bell */
 .bell {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 28px;
   color: $ink-800;
+  background: rgba(120, 90, 174, 0.562);
+  border-radius: 8px;
+  border: 1px solid rgba(90, 40, 155, 0.726);
 }
 
 /* ======= Título ======= */
-.title {
-  margin: 8px 0 12px;
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 20px 90px 20px;
   padding: 0 4px;
-  font-size: 32px;
-  line-height: 1.1;
+}
+
+/*.nav {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: calc(100% - 24px);
+  max-width: $mobile-max;
+  background: rgba(255, 255, 255, .95);
+  backdrop-filter: blur(8px);
+  border: 1px solid $line;
+  border-radius: 18px;
+  box-shadow: $shadow-2;
+}*/
+
+.title {
+  font-size: 28px;
+  line-height: 1.15;
   font-weight: 800;
   color: $ink-900;
 }
 
-/* ======= Caja resumen (2 filas) ======= */
+.badgeToday {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, $violet-200, $magenta-100);
+  color: $ink-900;
+  border: 1px solid rgba(0, 0, 0, .06);
+}
+
+/* ======= Caja resumen ======= */
 .summary {
-  background: $card-2;
-  border: 2px solid $line;
-  border-radius: 12px;
+  background: $card;
+  backdrop-filter: blur(6px);
+  border: 1px solid $line;
+  border-radius: $radius-xl;
+  box-shadow: $purple-300;
   overflow: hidden;
-  margin-top: 12px;
+  margin-top: 8px;
+  margin-bottom: 12px;
 }
 
 .summaryRow {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
   align-items: center;
-  justify-content: space-between;
   padding: 12px 16px;
   color: $ink-800;
 
-  & + & {
-    border-top: 1px solid #d6dbe2;
+  &+& {
+    border-top: 1px dashed rgba(16, 24, 40, .12);
+  }
+
+  /* barra de acento a la izquierda solo para el primero (próximo) */
+  &:first-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, $purple-300, $magenta-100);
   }
 }
 
+.summaryName {
+  font-weight: 600;
+}
+
 .summaryTime {
-  font-weight: 700;
+  font-weight: 800;
   color: $ink-800;
 }
 
 /* ======= Tarjeta de recordatorio ======= */
 .card {
-  margin-top: 18px;
+  margin-top: 12px;
   background: $card;
-  border: 2px solid $line;
-  border-radius: 12px;
-  padding: 16px;
+  backdrop-filter: blur(6px);
+  border: 1px solid $line;
+  border-radius: $radius-xl;
+  padding: 14px 16px 140px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: $shadow-1;
+  position: relative;
 }
+
+/* franja lateral por categoría (clases compuestas) */
+.card.pill::before,
+.card.skin::before,
+.card.hair::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  border-radius: 8px;
+}
+
+.card.pill::before {
+  background: linear-gradient(180deg, $rose-100, $magenta-100);
+}
+
+.card.skin::before {
+  background: linear-gradient(180deg, $lavender-200, $violet-200);
+}
+
+.card.hair::before {
+  background: linear-gradient(180deg, $purple-300, $lavender-200);
+}
+
 
 .left {
   display: flex;
@@ -107,87 +233,106 @@ $white:    #ffffff;
   width: 36px;
   height: 36px;
   border-radius: 999px;
-  background: $white;
-  border: 2px solid $ink-700;
-  color: $ink-700;
+  border: 1px solid rgba(17, 12, 46, .12);
+  background: linear-gradient(180deg, #fff, rgba(255, 255, 255, .6));
   display: grid;
   place-items: center;
+  box-shadow: $shadow-1;
 
   svg {
     width: 18px;
     height: 18px;
+    color: $ink-700;
   }
 }
 
 .cardTitle {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
   color: $ink-800;
 }
 
 .cardTime {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
-  color: $ink-800;
+  color: $ink-900;
 }
 
-/* ======= Chip de calendario ======= */
+/* ======= Chip calendario ======= */
 .calendar {
   position: absolute;
   right: 16px;
-  bottom: 110px; // por encima de la barra
-  width: 56px;
-  border-radius: 12px;
-  background: $card-2;
-  border: 2px solid $line;
+  bottom: 150px;
+  width: 62px;
+  border-radius: 14px;
   text-align: center;
   padding: 8px 6px;
+  background: linear-gradient(180deg, $lavender-200, $violet-200);
+  color: $ink-900;
+  box-shadow: $shadow-2;
+  border: 1px solid rgba(0, 0, 0, .06);
 
   .day {
     font-size: 18px;
     font-weight: 900;
     line-height: 1;
-    color: $ink-900;
   }
+
   .mon {
     margin-top: 2px;
     font-size: 10px;
     font-weight: 700;
-    color: $muted;
+    color: $ink-800;
   }
 }
 
-/* ======= Barra de navegación inferior ======= */
-.nav {
+/* === Contenedor para centrar y posicionar la barra inferior === */
+.navContainer {
   position: fixed;
-  left: 50%;
-  bottom: 0;
+  left: 30%;
+  bottom: 12px;
+  /* sitúa justo debajo del calendario */
   transform: translateX(-50%);
+  width: calc(100% - 24px);
+  max-width: $mobile-max;
+  display: flex;
+  justify-content: center;
+  z-index: 40;
+}
+
+/* Wrapper interno para permitir anular position del BottomNav hijo */
+.navWrapper {
+  pointer-events: auto;
   width: 100%;
   max-width: $mobile-max;
-  background: $white;
-  border-top: 1px solid #d1d5db;
+}
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* Si BottomNav viene con position: fixed, forzamos que dentro de este wrapper sea estático.
+   Esto usa !important porque estamos sobrescribiendo estilos que puedan venir del propio componente. */
+.navWrapper>* {
+  position: static !important;
+  width: 100% !important;
+}
 
-  a, button {
-    display: grid;
-    place-items: center;
-    padding: 12px 0;
+/* ======= Iconos pequeños para resumen ======= */
+.iconSmall {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .95);
+  border: 1px solid rgba(16, 24, 40, .06);
+  box-shadow: 0 4px 12px rgba(17, 12, 46, .05);
 
-    svg {
-      width: 28px;
-      height: 28px;
-      color: $ink-800;
-    }
-  }
-
-  .active {
-    background: #e2e8f0;
+  svg {
+    width: 18px;
+    height: 18px;
+    color: $ink-700;
   }
 }
 
-/* ======= Helpers ======= */
-.sep { height: 12px; }
+/* ======= Espaciadores/pequeños ajustes ======= */
+.sep {
+  height: 12px;
+}
