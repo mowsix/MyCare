@@ -1,43 +1,63 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import s from "./Skin.module.scss";
 import Logo from "../../assets/Logo";
 import { useRoutine } from "../../lib/routineStore";
 import BottomNav from "../../components/BottomNav";
 
-/* --------- Iconos (SVG inline, sin dependencias) ---------- */
-const HomeIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 3 2 12h3v9h6v-6h2v6h6v-9h3Z"/></svg>
+/* ---------- ICONOS INLINE ---------- */
+const SkinIcon = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 2c-3.5 4.3-6 7.6-6 10.5A6 6 0 0 0 12 19a6 6 0 0 0 6-6.5C18 9.6 15.5 6.3 12 2Z" /></svg>
 );
-const PillIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M4 12a5 5 0 0 0 8 4l-7-7a4.98 4.98 0 0 0-1 3Zm9-4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-6.5.5 7 7"/></svg>
-);
-const UserIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-5 0-9 2.5-9 5v1h18v-1c0-2.5-4-5-9-5Z"/></svg>
-);
-const KitIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3H3V8a2 2 0 0 1 2-2h3Zm2-2h4v2h-4V4Zm-7 9h18v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7Zm9 1h2v3h3v2h-3v3h-2v-3H7v-2h5v-3Z"/></svg>
+const SmallSkin = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 2c-3.5 4.3-6 7.6-6 10.5A6 6 0 0 0 12 19a6 6 0 0 0 6-6.5C18 9.6 15.5 6.3 12 2Z" /></svg>
 );
 
-/* Ícono para el header (gota/skin) */
-const SkinIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 2c-3.5 4.3-6 7.6-6 10.5A6 6 0 0 0 12 19a6 6 0 0 0 6-6.5C18 9.6 15.5 6.3 12 2Z"/></svg>
-);
+/* ---------- CONSEJOS (puedes editar o ampliar) ---------- */
+const TIPS = [
+  "Limpia tu cara dos veces al día con un limpiador suave para eliminar impurezas.",
+  "Usa protector solar todos los días, incluso cuando esté nublado.",
+  "Mantén hidratada tu piel: aplica una crema hidratante adecuada a tu tipo de piel.",
+  "No te acuestes con maquillaje. Esto evita obstrucción de poros y daños.",
+  "Exfolia suavemente 1-2 veces por semana para eliminar células muertas.",
+  "Mantén una dieta equilibrada y bebe suficiente agua para favorecer la piel.",
+];
 
 export default function Skin() {
-  // Solo elementos de categoría "piel"
-  const { items } = useRoutine("piel");
+  // Solo elementos de categoría "piel" — si tu hook acepta un filtro como parámetro
+  const { items } = useRoutine?.("piel") ?? useRoutine(); // fallback por seguridad
+  // ordenar o memoizar si quieres
+  const products = useMemo(() => items?.slice?.() ?? [], [items]);
+
+  // Modal de consejos
+  const [tipOpen, setTipOpen] = useState(false);
+  const [currentTip, setCurrentTip] = useState<string | null>(null);
+
+  function openTip() {
+    const choice = TIPS[Math.floor(Math.random() * TIPS.length)];
+    setCurrentTip(choice);
+    setTipOpen(true);
+  }
+  function closeTip() {
+    setTipOpen(false);
+    // opcional: limpiar tip tras cerrar
+    setTimeout(() => setCurrentTip(null), 200);
+  }
 
   return (
     <div className={s.wrap}>
       <div className={s.container}>
-        {/* Header */}
+        {/* Header: título centrado. logo left, icon right (absolute) */}
         <header className={s.header}>
-          <div className={s.left}>
+          <div className={s.logoWrap}>
             <Logo className={s.logo} />
-            <h1 className={s.titleTop}>Piel</h1>
           </div>
-          <SkinIcon className={s.skinIcon} />
+
+          <h1 className={s.titleTop}>Piel</h1>
+
+          <div className={s.headerRight}>
+            <SkinIcon className={s.skinIcon} />
+          </div>
         </header>
 
         {/* Botón Mi SkinCare */}
@@ -46,14 +66,13 @@ export default function Skin() {
         {/* Mis productos */}
         <h2 className={s.h2}>Mis productos</h2>
         <div className={s.products}>
-          {items.length === 0 ? (
-            <div style={{ textAlign: "center", color: "#64748b" }}>
-              Aún no tienes productos de piel en tu rutina.
-            </div>
+          {products.length === 0 ? (
+            <div className={s.emptyText}>Aún no tienes productos de piel en tu rutina.</div>
           ) : (
-            items.map((it) => (
+            products.map((it: any) => (
               <button key={it.id} className={s.productBtn}>
-                {it.name}
+                <span className={s.prodIcon}><SmallSkin /></span>
+                <span className={s.prodName}>{it.name}</span>
               </button>
             ))
           )}
@@ -62,12 +81,27 @@ export default function Skin() {
         {/* Crear rutina -> /routine */}
         <Link to="/routine" className={s.createBtn}>Crear rutina</Link>
 
-        {/* Consejos (estático por ahora) */}
-        <button className={s.tipsBtn}>Consejos</button>
+        {/* Consejos (abre modal) */}
+        <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
       </div>
 
-      {/* Barra inferior (misma que en Home/Meds) */}
-       <BottomNav />
+      {/* Chip / BottomNav centering wrapper */}
+      <div className={s.navContainer}>
+        <div className={s.navWrapper}>
+          <BottomNav />
+        </div>
+      </div>
+
+      {/* Modal de consejo */}
+      {tipOpen && (
+        <div className={s.modalBackdrop} onClick={closeTip} role="dialog" aria-modal="true">
+          <div className={s.modalCard} onClick={(e) => e.stopPropagation()}>
+            <h3 className={s.modalTitle}>Consejo</h3>
+            <p className={s.modalText}>{currentTip}</p>
+            <button className={s.modalClose} onClick={closeTip}>Cerrar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

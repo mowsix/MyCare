@@ -1,137 +1,274 @@
-/* ======= Tokens ======= */
-$mobile-max: 375px;
+/* ===== Palette (coolors) ===== */
+$rose-100: #fdc5f5;
+$magenta-100: #f7aef8;
+$violet-200: #c2a0ef;
+$lavender-200: #ceb3f2;
+$purple-300: #b388eb;
+
+/* Neutrales */
 $ink-900: #0f172a;
 $ink-800: #1f2937;
 $ink-700: #334155;
-$muted:   #64748b;
-$line:    #cbd5e1;
-$card:    #e9edf2;
-$white:   #ffffff;
+$muted: #64748b;
+$line: rgba(16, 24, 40, .12);
+$white: #ffffff;
 
-/* ======= Layout ======= */
+/* Helpers */
+$mobile-max: 375px;
+$radius-xl: 14px;
+$shadow-1: 0 6px 18px rgba(17, 12, 46, .06);
+$shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
+
+/* Layout */
 .wrap {
   position: relative;
   min-height: 100svh;
-  background: $white;
-  padding-bottom: 88px; // espacio para la barra fija
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(245, 241, 250, 1));
+  padding-bottom: 110px;
+  /* espacio para nav */
 }
+
 .container {
   width: 100%;
   max-width: $mobile-max;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 12px 16px 28px;
 }
 
-/* ======= Header ======= */
+/* Header: titulo centrado, logo left, icon right */
 .header {
+  position: relative;
+  height: 80px;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, $rose-100, $magenta-100);
+  border-radius: 12px;
+  box-shadow: $shadow-1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 0 12px;
+  justify-content: center;
+  padding: 50px 50px;
 }
-.left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.logo { width: 40px; height: 40px; }
-.titleTop {
-  font-size: 36px; /* similar a 5xl mobile */
-  font-weight: 800;
-  line-height: 1.05;
-  color: $ink-900;
-}
-.skinIcon { width: 28px; height: 28px; color: $ink-800; }
 
-/* ======= Botón "Mi SkinCare" ======= */
+/* logo absolute left */
+.logoWrap {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: $white;
+  padding: 6px;
+  box-shadow: 0 6px 18px rgba(179, 120, 243, .12);
+  border: 1px solid rgba(0, 0, 0, .04);
+}
+
+/* header right icon */
+.headerRight {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.skinIcon {
+  width: 34px;
+  height: 34px;
+  color: $ink-900;
+  background: rgba(255, 255, 255, .85);
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, .04);
+}
+
+/* Title centered */
+.titleTop {
+  font-size: 28px;
+  font-weight: 800;
+  color: $ink-900;
+  margin: 0;
+}
+
+/* Mi SkinCare button */
 .skinBtn {
   width: 100%;
-  background: #e5e7eb; /* gray-300 */
-  color: #374151;       /* gray-700 */
   padding: 16px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 18px;
-  border: 1px solid $line;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, $violet-200, $magenta-100);
+  color: $ink-900;
+  font-weight: 800;
+  border: 1px solid rgba(0, 0, 0, .05);
+  margin-top: 12px;
+  box-shadow: $shadow-1;
 }
 
-/* ======= Título sección ======= */
+/* H2 */
 .h2 {
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   color: $ink-900;
-  margin: 10px 0 14px;
+  margin: 18px 0 10px;
 }
 
-/* ======= Lista de productos (botones) ======= */
+/* Products list */
 .products {
   display: grid;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-.productBtn {
-  width: 100%;
-  background: $white;
-  color: #374151; /* gray-700 */
-  border: 1px solid $line;
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 18px;
-  text-align: center;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-/* ======= Crear rutina / Consejos ======= */
+.emptyText {
+  text-align: center;
+  color: $muted;
+  padding: 12px 6px;
+  font-size: 14px;
+}
+
+/* Each product button with small icon */
+.productBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: $white;
+  border: 1px solid $line;
+  box-shadow: 0 6px 12px rgba(16, 24, 40, .03);
+  font-size: 16px;
+  color: $ink-800;
+}
+
+.prodIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, .9));
+  border: 1px solid rgba(16, 24, 40, .04);
+}
+
+.prodIcon svg {
+  width: 18px;
+  height: 18px;
+  color: $ink-700;
+}
+
+.prodName {
+  flex: 1;
+  text-align: left;
+}
+
+/* Crear rutina and Consejos */
 .createBtn {
   width: 100%;
-  background: $white;
-  color: #374151;
-  border: 1.5px solid #9aa4b1; /* un poco más marcado que $line */
-  border-radius: 10px;
   padding: 12px 14px;
-  font-size: 18px;
+  border-radius: 10px;
+  background: $white;
+  color: $ink-800;
+  border: 1.5px solid rgba(16, 24, 40, .08);
   text-align: center;
-  margin-bottom: 16px;
-  text-decoration: none;
   display: inline-block;
-}
-.tipsBtn {
-  width: 100%;
-  background: #e5e7eb; /* gray-200 */
-  color: #1f2937; /* gray-800 */
-  border-radius: 999px;
-  padding: 16px;
-  font-size: 24px;
-  text-align: center;
+  margin-bottom: 12px;
   font-weight: 700;
 }
 
-/* ======= Barra de navegación inferior ======= */
-.nav {
+.tipsBtn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, $magenta-100, $purple-300);
+  color: $ink-900;
+  font-weight: 800;
+  font-size: 18px;
+  border: none;
+  box-shadow: 0 8px 22px rgba(179, 120, 243, .12);
+}
+
+/* ===== Bottom nav centering wrapper (igual patrón que Home) ===== */
+.navContainer {
   position: fixed;
   left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
+  bottom: 12px;
+  transform: translateX(-140%);
+  width: calc(100% - 24px);
+  max-width: $mobile-max;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.navWrapper {
   width: 100%;
   max-width: $mobile-max;
-  background: #f3f4f6; // gray-200
-  border-top: 1px solid #d1d5db;
-  ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
+  pointer-events: auto;
 }
-.tab {
+
+/* Forzamos que BottomNav hijo no use position:fixed (override) */
+.navWrapper>* {
+  position: static !important;
+  width: 100% !important;
+}
+
+/* ===== Modal (consejos) ===== */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 18, 0.45);
   display: grid;
   place-items: center;
-  padding: 12px 0;
-  text-decoration: none;
-  svg { width: 28px; height: 28px; color: $ink-700; }
+  z-index: 80;
 }
-.active {
-  background: #e2e8f0;
-  border-top: 2px solid $ink-900;
-  svg { color: $ink-900; }
+
+.modalCard {
+  width: calc(100% - 48px);
+  max-width: 320px;
+  background: linear-gradient(180deg, $white, #fbf8ff);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(10, 11, 30, .4);
+  border: 1px solid rgba(16, 24, 40, .06);
+}
+
+.modalTitle {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  color: $ink-900;
+}
+
+.modalText {
+  margin: 0 0 14px;
+  color: $ink-800;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.modalClose {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, $violet-200, $magenta-100);
+  color: $ink-900;
+  border: none;
+  font-weight: 700;
+}
+
+/* small responsive tweak */
+@media (min-width: 420px) {
+  .container {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
 }
