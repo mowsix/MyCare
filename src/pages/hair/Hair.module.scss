@@ -1,115 +1,249 @@
-/* ======= Tokens ======= */
-$mobile-max: 375px;
+/* ===== Palette (coolors) ===== */
+$rose-100: #fdc5f5;
+$magenta-100: #f7aef8;
+$violet-200: #c2a0ef;
+$lavender-200: #ceb3f2;
+$purple-300: #b388eb;
+
+/* Neutrales */
 $ink-900: #0f172a;
 $ink-800: #1f2937;
 $ink-700: #334155;
-$muted:   #64748b;
-$line:    #cbd5e1;
-$white:   #ffffff;
+$muted: #64748b;
+$line: rgba(16, 24, 40, .12);
+$white: #ffffff;
 
-/* ======= Layout ======= */
+/* Helpers */
+$mobile-max: 375px;
+$radius-xl: 12px;
+$shadow-1: 0 6px 18px rgba(17, 12, 46, .06);
+$shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
+
+/* Layout */
 .wrap {
   position: relative;
   min-height: 100svh;
-  background: $white;
-  padding-bottom: 88px; // espacio para la barra fija
+  background: linear-gradient(180deg, #fff, #fbf8ff);
+  padding-bottom: 110px;
 }
+
 .container {
   width: 100%;
   max-width: $mobile-max;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 12px 16px 28px;
 }
 
-/* ======= Header ======= */
+/* Header */
 .header {
+  position: relative;
+  height: 100px;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, $magenta-100, $violet-200);
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px 0 12px;
-  border-bottom: 1px solid #e5e7eb;
+  justify-content: center;
+  padding: 40px 20px;
+  box-shadow: $shadow-1;
 }
-.left { display: flex; align-items: center; gap: 12px; }
-.logo { width: 40px; height: 40px; }
-.titleTop {
-  font-size: 28px; /* similar al mock mobile */
-  font-weight: 800;
-  line-height: 1.05;
+
+.logoWrap {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo {
+  width: 52px;
+  height: 52px;
+  background: $white;
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(179, 120, 243, .08);
+  border: 1px solid rgba(0, 0, 0, .04);
+}
+
+.headerRight {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hairIcon {
+  width: 34px;
+  height: 34px;
   color: $ink-900;
+  background: transparent;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, .04);
 }
-.hairIcon { width: 28px; height: 28px; color: $ink-800; }
 
-/* ======= Sección ======= */
+/* Title */
+.titleTop {
+  font-size: 26px;
+  font-weight: 900;
+  color: $ink-900;
+  margin: 0;
+}
+
+/* Section */
 .h2 {
-  margin: 16px 0 12px;
-  font-size: 18px;
+  margin: 16px 50px 12px;
+  font-size: 16px;
   font-weight: 700;
-  color: #4b5563; /* gray-600 */
+  color: $ink-800;
 }
 
-/* ======= Lista de productos (botones grises) ======= */
-.list { display: grid; gap: 12px; }
+/* List & items */
+.list {
+  display: grid;
+  gap: 12px;
+}
+
 .itemBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
   text-align: left;
-  background: #e5e7eb; /* gray-200 */
-  color: #1f2937;      /* gray-800 */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(250, 248, 253, 1));
+  color: $ink-800;
   padding: 12px 14px;
   border-radius: 12px;
-  border: none;
-  font-size: 18px;
-  display: block;
+  border: 1px solid $line;
+  font-size: 16px;
 }
 
-/* ======= Crear rutina ======= */
+.itemIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, $white, rgba(255, 255, 255, .9));
+  border: 1px solid rgba(154, 27, 174, 0.667);
+}
+
+.itemIcon svg {
+  width: 18px;
+  height: 18px;
+  color: $ink-700;
+}
+
+.itemName {
+  flex: 1;
+}
+
+/* Create btn */
 .createBtn {
   width: 100%;
-  margin-top: 8px;
-  background: #f3f4f6;   /* gray-100 */
-  color: #6b7280;        /* gray-500 */
-  border: 1px solid #d1d5db; /* gray-300 */
+  margin-top: 6px;
+  background: $white;
+  color: $ink-800;
+  border: 1px solid rgba(16, 24, 40, .06);
   padding: 12px 14px;
   border-radius: 12px;
-  font-size: 18px;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-decoration: none;
+  font-weight: 700;
 }
 
-/* ======= Consejos ======= */
-.tipsWrap { margin-top: 18px; }
+/* Tips */
+.tipsWrap {
+  margin-top: 18px;
+}
+
 .tipsBtn {
   width: 100%;
-  background: #e5e7eb;
-  color: #1f2937;
-  padding: 16px;
+  background: linear-gradient(90deg, $violet-200, $purple-300);
+  color: $ink-900;
+  padding: 14px;
   border-radius: 999px;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
   border: none;
+  box-shadow: 0 10px 26px rgba(179, 120, 243, .08);
 }
 
-/* ======= Barra de navegación inferior ======= */
-.nav {
+/* Nav centering wrapper */
+.navContainer {
   position: fixed;
   left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100%;
+  bottom: 12px;
+  transform: translateX(-130%);
+  width: calc(100% - 24px);
   max-width: $mobile-max;
-  background: #ffffff;
-  border-top: 1px solid #d1d5db;
-  ul { display: grid; grid-template-columns: repeat(4, 1fr); }
-}
-.tab {
-  display: grid; place-items: center;
-  padding: 12px 0;
-  text-decoration: none;
-  svg { width: 28px; height: 28px; color: $ink-700; }
-}
-.active {
-  background: #e5e7eb;
-  border-top: 2px solid $ink-900;
-  svg { color: $ink-900; }
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
 }
 
-.card { width: 100%;}
+.navWrapper {
+  width: 100%;
+  max-width: $mobile-max;
+  pointer-events: auto;
+}
+
+.navWrapper>* {
+  position: static !important;
+  width: 100% !important;
+}
+
+/* Modal */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 18, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 80;
+}
+
+.modalCard {
+  width: calc(100% - 48px);
+  max-width: 340px;
+  background: linear-gradient(180deg, $white, #fbf8ff);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(10, 11, 30, .35);
+  border: 1px solid rgba(16, 24, 40, .06);
+}
+
+.modalTitle {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 800;
+  color: $ink-900;
+}
+
+.modalText {
+  margin: 0 0 14px;
+  color: $ink-800;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.modalClose {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, $magenta-100, $violet-200);
+  color: $ink-900;
+  border: none;
+  font-weight: 700;
+}
+
+/* small responsive tweak */
+@media (min-width: 420px) {
+  .container {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
