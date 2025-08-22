@@ -37,14 +37,14 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
 /* Header */
 .header {
   position: relative;
-  height: 100px;
+  height: 150px;
   margin-bottom: 20px;
   background: linear-gradient(180deg, $magenta-100, $violet-200);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 10px 20px;
   box-shadow: $shadow-1;
 }
 
