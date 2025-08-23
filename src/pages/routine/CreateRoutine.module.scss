@@ -1,92 +1,367 @@
-/* ======= Tokens ======= */
-$mobile-max: 375px;
+/* ======= Palette ======= */
+$rose-100: #fdc5f5;
+$magenta-100: #f7aef8;
+$violet-200: #c2a0ef;
+$lavender-200: #ceb3f2;
+$purple-300: #b388eb;
+
 $ink-900: #0f172a;
 $ink-800: #1f2937;
-$muted:   #64748b;
-$line:    #9aa4b1;
-$card-2:  #f3f5f8;
-$white:   #ffffff;
+$muted: #64748b;
+$line: rgba(16, 24, 40, .12);
+$white: #ffffff;
+
+$mobile-max: 375px;
+$shadow-1: 0 6px 18px rgba(17, 12, 46, .08);
 
 /* ======= Layout ======= */
-.wrap { min-height: 100svh; background: $white; }
-.container { width: 100%; max-width: $mobile-max; margin: 0 auto; padding: 24px 16px 100px; }
+.wrap {
+  min-height: 100svh;
+  background:
+    linear-gradient(180deg, rgba(253, 197, 245, .35), rgba(206, 179, 242, .18)),
+    $white;
+}
+
+.container {
+  width: 100%;
+  max-width: $mobile-max;
+  margin: 0 auto;
+  padding: 20px 16px 110px;
+}
 
 /* ======= Título ======= */
-.h1 { text-align: center; font-size: 28px; font-weight: 800; color: $ink-900; margin-bottom: 18px; }
+.h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
+  color: $ink-900;
+  margin: 4px 0 18px;
+  position: relative;
 
-/* ======= Buscador ======= */
-.searchWrap { position: relative; margin-bottom: 12px; }
-.search {
-  width: 100%; padding: 10px 40px 10px 12px;
-  border: 0; border-bottom: 2px solid #cbd5e1;
-  font-size: 16px; outline: none; &:focus { border-bottom-color: #64748b; }
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 6px;
+    margin: 10px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, $violet-200, $magenta-100);
+  }
 }
-.searchIcon { position: absolute; right: 8px; top: 6px; width: 24px; height: 24px; color: $muted; }
+
+/* ======= Buscador / add ======= */
+.searchWrap {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.search {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border-radius: 14px;
+  border: 1px solid $line;
+  background: rgba(255, 255, 255, .9);
+  box-shadow: $shadow-1;
+  font-size: 16px;
+  color: $ink-800;
+  outline: none;
+
+  &:focus {
+    border-color: rgba(179, 136, 235, .6);
+    box-shadow: 0 0 0 4px rgba(179, 136, 235, .18);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  color: $muted;
+}
+
 .addBtn {
-  margin-top: 10px; width: 100%;
-  border-radius: 999px; background: #e5e7eb; border: 1px solid #cbd5e1;
-  color: $ink-900; font-weight: 700; padding: 10px 14px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-weight: 800;
+  font-size: 16px;
+  color: $ink-900;
+  background: linear-gradient(90deg, $lavender-200, $violet-200);
+  border: 1px solid rgba(0, 0, 0, .06);
+  box-shadow: $shadow-1;
 }
 
 /* ======= Lista provisional ======= */
-.listBox { margin-top: 18px; background: $card-2; border: 1px solid #cbd5e1; border-radius: 12px; padding: 10px 12px; }
-.item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; & + & { border-top: 1px solid #e2e8f0; } }
-.cat { font-size: 12px; font-weight: 700; color: $muted; background: #e2e8f0; border-radius: 999px; padding: 2px 8px; margin-left: 10px; }
-.rm { border: none; background: transparent; color: #9ca3af; cursor: pointer; font-weight: 700; }
+.listBox {
+  margin-top: 16px;
+  background: rgba(255, 255, 255, .75);
+  border: 1px solid $line;
+  border-radius: 16px;
+  padding: 8px 10px;
+  box-shadow: $shadow-1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 6px;
+
+  &+& {
+    border-top: 1px dashed rgba(16, 24, 40, .14);
+  }
+}
+
+.cat {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  color: $ink-800;
+  background: linear-gradient(90deg, $rose-100, $magenta-100);
+  border: 1px solid rgba(16, 24, 40, .06);
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+.rm {
+  border: none;
+  background: transparent;
+  color: $muted;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  &:hover {
+    background: rgba(16, 24, 40, .06);
+  }
+}
 
 /* ======= Guardar ======= */
-.saveBtn { margin-top: 18px; width: 100%; border-radius: 999px; font-weight: 800; color: #111827; padding: 12px 16px; background: #e5e7eb; border: 1px solid #cbd5e1; }
+.saveBtn {
+  margin-top: 16px;
+  width: 100%;
+  border-radius: 999px;
+  padding: 14px 16px;
+  font-weight: 900;
+  font-size: 16px;
+  color: $ink-900;
+  background: linear-gradient(90deg, $magenta-100, $purple-300);
+  border: 1px solid rgba(0, 0, 0, .06);
+  box-shadow: $shadow-1;
+}
 
-/* ======= Ilustración ======= */
-.illus { display: grid; place-items: center; margin-top: 18px;
-  img { width: 88px; height: 88px; object-fit: cover; border-radius: 12px; } }
+.inicioBtn {
+  margin-top: 16px;
+  width: 100%;
+  border-radius: 999px;
+  padding: 14px 16px;
+  font-weight: 900;
+  font-size: 16px;
+  color: $ink-900;
+  background: linear-gradient(90deg, $magenta-100, $purple-300);
+  border: 1px solid rgba(0, 0, 0, .06);
+  box-shadow: $shadow-1;
+}
 
-/* ======= Modal combinado (categoría + día + hora) ======= */
-.modalMask { position: fixed; inset: 0; background: rgba(15,23,42,0.35); display: grid; place-items: center; }
-.modalCard { width: calc(min(340px, 92vw)); background: $white; border-radius: 14px; padding: 16px; border: 1px solid #e2e8f0; }
-.modalTitle { font-weight: 800; color: $ink-900; margin-bottom: 8px; }
-.modalSub { color: $ink-800; font-weight: 700; margin: 12px 0 6px; }
+/* ======= Logo ======= */
+.logoWrap {
+  margin-top: 16px;
+  width: 100%;
+  border-radius: 999px;
+  padding: 14px 16px;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.logo {
+  width: 250px;
+  height: 100px;
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 20px rgba(179, 120, 243, .08);
+}
+
+/* ======= Modal combinado ======= */
+.modalMask {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  background: rgba(15, 23, 42, .35);
+  display: grid;
+  place-items: center;
+  z-index: 40;
+}
+
+.modalCard {
+  width: calc(min(360px, 92vw));
+  background: $white;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid $line;
+  box-shadow: 0 12px 34px rgba(17, 12, 46, .18);
+  animation: pop .16s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(.98);
+    opacity: .6;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modalTitle {
+  font-weight: 900;
+  color: $ink-900;
+  margin-bottom: 6px;
+}
+
+.modalSub {
+  color: $ink-800;
+  font-weight: 800;
+  margin: 12px 0 8px;
+}
 
 /* Categorías */
 .modalRow {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-  button {
-    border: 1px solid #cbd5e1; background: #f8fafc; color: $ink-800;
-    padding: 8px; border-radius: 10px; font-weight: 700; cursor: pointer;
-    &:hover { background: #e2e8f0; }
-  }
-  /* activo por data-attr */
-  button[data-active="true"] { background: #64748b; border-color: #64748b; color: white; }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 
-/* Días dentro del modal */
-.modalDayGrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.modalRow button {
+  border: 1px solid $line;
+  background: #faf8ff;
+  color: $ink-800;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modalRow button[data-active="true"] {
+  background: linear-gradient(90deg, $violet-200, $magenta-100);
+  color: #1f2937;
+  border-color: rgba(0, 0, 0, .06);
+}
+
+/* Días */
+.modalDayGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
 .modalDay {
-  text-align: center; font-size: 12px; color: $muted; cursor: pointer; user-select: none;
+  text-align: center;
+  font-size: 12px;
+  color: $muted;
+  cursor: pointer;
+  user-select: none;
 }
-.modalBox { margin-top: 4px; width: 36px; height: 36px; border-radius: 8px; background: #e5e7eb; margin-inline: auto; }
 
-/* activo por data-attr */
-.modalDay[data-on="true"] { color: #111827; }
-.modalDay[data-on="true"] .modalBox { background: #64748b; }
+.modalBox {
+  margin-top: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #eef2ff;
+  margin-inline: auto;
+}
 
-/* Hora dentro del modal */
-.modalTimeRow { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; }
+.modalDay[data-on="true"] {
+  color: $ink-900;
+}
+
+.modalDay[data-on="true"] .modalBox {
+  background: linear-gradient(180deg, $lavender-200, $violet-200);
+}
+
+/* Hora */
+.modalTimeRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
 .modalNum input {
-  width: 64px; text-align: center; font-size: 36px; font-weight: 800;
-  color: $ink-800; background: transparent; border: none; outline: none;
-}
-.modalSep { font-size: 36px; font-weight: 800; color: $ink-800; }
-.modalMer { margin-left: 6px; display: grid; gap: 6px;
-  button { padding: 4px 8px; font-size: 12px; border-radius: 6px; cursor: pointer; border: 1px solid #cbd5e1; background: #e5e7eb; color: $ink-800; }
-  /* activo por data-attr */
-  button[data-active="true"] { background: #64748b; color: white; border-color: #64748b; }
+  width: 64px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 900;
+  color: $ink-800;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
-/* Acciones del modal */
+.modalSep {
+  font-size: 36px;
+  font-weight: 900;
+  color: $ink-800;
+}
+
+.modalMer {
+  margin-left: 6px;
+  display: grid;
+  gap: 6px;
+}
+
+.modalMer button {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid $line;
+  background: #eef2ff;
+  color: $ink-800;
+  font-weight: 800;
+}
+
+.modalMer button[data-active="true"] {
+  background: linear-gradient(90deg, $rose-100, $magenta-100);
+  border-color: rgba(0, 0, 0, .06);
+}
+
+/* Acciones */
 .modalActions {
-  margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-  button { padding: 10px 12px; border-radius: 10px; font-weight: 800; cursor: pointer; }
-  .cancel { background: transparent; border: 1px solid #cbd5e1; color: $muted; }
-  .confirm { background: #e5e7eb; border: 1px solid #cbd5e1; color: #111827; }
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cancel,
+.confirm {
+  padding: 12px 12px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #fff;
+  border: 1px solid $line;
+  color: $muted;
+}
+
+.confirm {
+  background: linear-gradient(90deg, $lavender-200, $violet-200);
+  border: 1px solid rgba(0, 0, 0, .06);
+  color: $ink-900;
 }

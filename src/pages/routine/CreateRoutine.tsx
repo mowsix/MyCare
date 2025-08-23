@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import s from "./CreateRoutine.module.scss";
 import type { Category, Meridiem } from "../../lib/routineStore";
+import Logo from "../../assets/Logo";
 import { RoutineDB } from "../../lib/routineStore";
 import { useNavigate } from "react-router-dom";
 
@@ -117,7 +118,7 @@ export default function CreateRoutine() {
             onKeyDown={(e) => { if (e.key === "Enter") addQuery(); }}
           />
           <svg className={s.searchIcon} viewBox="0 0 24 24">
-            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 1 0-.71.71l.27.28v.79L20 20.49 21.49 19l-5.99-5zM6.5 11a4.5 4.5 0 1 1 9.001.001A4.5 4.5 0 0 1 6.5 11z"/>
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 1 0-.71.71l.27.28v.79L20 20.49 21.49 19l-5.99-5zM6.5 11a4.5 4.5 0 1 1 9.001.001A4.5 4.5 0 0 1 6.5 11z" />
           </svg>
         </div>
         <button className={s.addBtn} onClick={addQuery}>Agregar a la lista</button>
@@ -147,99 +148,103 @@ export default function CreateRoutine() {
         {/* Guardar todo */}
         <button className={s.saveBtn} onClick={onSaveAll}>Guardar</button>
 
-        {/* Ilustración */}
-        <div className={s.illus}>
-          <img
-            alt="Ilustración"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj7sQDeZiXHJbhoPAvv1kfQVAB7tw0j-Imkempzlu_V_mOWhMd1P8YAPWF8F3rM0NZfsc4ubfAMnT4QYfWDA9ffOs4UKMvG4tIcnj3Bb2HTIxNkbMaSXtATBkN5kSAyehPSRX4mgqiRDIx-lWpYkJoGMGvmOai3SByZMIgtji97wGA5e20TsHlp_2-qs_nu10PmJosyo7W2jpzB1cHrSrk9_PwwWnEoVG7b9zzicnjN6tOEdSdKg4GP-Dbmt-HBpQWkTeQ3Nm4RkM5"
-          />
-        </div>
+        {/* Regresar al inicio */}
+        <button
+          onClick={() => navigate("/home")}
+          className={s.inicioBtn}
+        > Regresar al inicio</button>
+
+
+        {/* Logo */}
+        <div className={s.logoWrap}><Logo className={s.logo} /></div>
       </div>
 
       {/* MODAL: categoría + días + hora */}
-      {modalOpen && (
-        <div className={s.modalMask} onClick={() => setModalOpen(false)}>
-          <div className={s.modalCard} onClick={(e) => e.stopPropagation()}>
-            <div className={s.modalTitle}>Configurar “{draftName}”</div>
+      {
+        modalOpen && (
+          <div className={s.modalMask} onClick={() => setModalOpen(false)}>
+            <div className={s.modalCard} onClick={(e) => e.stopPropagation()}>
+              <div className={s.modalTitle}>Configurar “{draftName}”</div>
 
-            {/* Categoría */}
-            <div className={s.modalSub}>Categoría</div>
-            <div className={s.modalRow}>
-              {(["pastillas","piel","cabello"] as Category[]).map((c) => (
-                <button
-                  key={c}
-                  data-active={draftCategory === c}
-                  onClick={() => setDraftCategory(c)}
-                >
-                  {c[0].toUpperCase() + c.slice(1)}
-                </button>
-              ))}
-            </div>
-
-            {/* Días */}
-            <div className={s.modalSub} style={{ marginTop: 14 }}>Día</div>
-            <div className={s.modalDayGrid}>
-              {DAY_LABELS.map((d, i) => {
-                const on = draftDays[i];
-                return (
-                  <div
-                    key={i}
-                    className={s.modalDay}
-                    data-on={on}
-                    onClick={() => toggleDraftDay(i)}
+              {/* Categoría */}
+              <div className={s.modalSub}>Categoría</div>
+              <div className={s.modalRow}>
+                {(["pastillas", "piel", "cabello"] as Category[]).map((c) => (
+                  <button
+                    key={c}
+                    data-active={draftCategory === c}
+                    onClick={() => setDraftCategory(c)}
                   >
-                    <div>{d}</div>
-                    <div className={s.modalBox} />
-                  </div>
-                );
-              })}
-            </div>
+                    {c[0].toUpperCase() + c.slice(1)}
+                  </button>
+                ))}
+              </div>
 
-            {/* Hora */}
-            <div className={s.modalSub} style={{ marginTop: 14 }}>Hora</div>
-            <div className={s.modalTimeRow}>
-              <div className={s.modalNum}>
-                <input
-                  type="number"
-                  value={normHour}
-                  min={1}
-                  max={12}
-                  onChange={(e) => setDraftHour(parseInt(e.target.value || "0"))}
-                />
+              {/* Días */}
+              <div className={s.modalSub} style={{ marginTop: 14 }}>Día</div>
+              <div className={s.modalDayGrid}>
+                {DAY_LABELS.map((d, i) => {
+                  const on = draftDays[i];
+                  return (
+                    <div
+                      key={i}
+                      className={s.modalDay}
+                      data-on={on}
+                      onClick={() => toggleDraftDay(i)}
+                    >
+                      <div>{d}</div>
+                      <div className={s.modalBox} />
+                    </div>
+                  );
+                })}
               </div>
-              <div className={s.modalSep}>:</div>
-              <div className={s.modalNum}>
-                <input
-                  type="number"
-                  value={String(normMinute).padStart(2, "0")}
-                  min={0}
-                  max={59}
-                  onChange={(e) => setDraftMinute(parseInt(e.target.value || "0"))}
-                />
-              </div>
-              <div className={s.modalMer}>
-                <button
-                  data-active={draftMeridiem === "AM"}
-                  onClick={() => setDraftMeridiem("AM")}
-                >
-                  AM
-                </button>
-                <button
-                  data-active={draftMeridiem === "PM"}
-                  onClick={() => setDraftMeridiem("PM")}
-                >
-                  PM
-                </button>
-              </div>
-            </div>
 
-            <div className={s.modalActions}>
-              <button className="cancel" onClick={() => setModalOpen(false)}>Cancelar</button>
-              <button className="confirm" onClick={confirmDraft}>Añadir</button>
+              {/* Hora */}
+              <div className={s.modalSub} style={{ marginTop: 14 }}>Hora</div>
+              <div className={s.modalTimeRow}>
+                <div className={s.modalNum}>
+                  <input
+                    type="number"
+                    value={normHour}
+                    min={1}
+                    max={12}
+                    onChange={(e) => setDraftHour(parseInt(e.target.value || "0"))}
+                  />
+                </div>
+                <div className={s.modalSep}>:</div>
+                <div className={s.modalNum}>
+                  <input
+                    type="number"
+                    value={String(normMinute).padStart(2, "0")}
+                    min={0}
+                    max={59}
+                    onChange={(e) => setDraftMinute(parseInt(e.target.value || "0"))}
+                  />
+                </div>
+                <div className={s.modalMer}>
+                  <button
+                    data-active={draftMeridiem === "AM"}
+                    onClick={() => setDraftMeridiem("AM")}
+                  >
+                    AM
+                  </button>
+                  <button
+                    data-active={draftMeridiem === "PM"}
+                    onClick={() => setDraftMeridiem("PM")}
+                  >
+                    PM
+                  </button>
+                </div>
+              </div>
+
+              <div className={s.modalActions}>
+                <button className={s.cancel} onClick={() => setModalOpen(false)}>Cancelar</button>
+                <button className={s.confirm} onClick={confirmDraft}>Añadir</button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+    </div >
   );
 }
