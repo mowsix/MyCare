@@ -21,10 +21,14 @@ export default function Calendar() {
       {/* Header */}
       <header className={s.header}>
         <Logo className={s.logo} />
-        <div className={s.actions}>
+
+        {/*------ por si en un futuro se quiere aguegar notidicaciones*------------/}
+
+        {/*<div className={s.actions}>
           <span className="material-icons">notifications_none</span>
           <span className="material-icons">menu</span>
-        </div>
+        </div>*/}
+
       </header>
 
       {/* Main */}
