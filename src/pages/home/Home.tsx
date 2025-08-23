@@ -106,12 +106,10 @@ export default function Home() {
 
   return (
     <div className={s.wrap}>
-      {/*} <div className={s.container}>*/}
       {/* Header */}
       <header className={s.header}>
         <div className={s.headerInner}>
           <Logo className={s.logo} />
-          <button aria-label="Notificaciones"><BellIcon className={s.bell} /></button>
         </div>
       </header>
 

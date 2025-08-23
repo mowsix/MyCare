@@ -51,13 +51,13 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
     linear-gradient(180deg, rgba(253, 197, 245, .65), rgba(206, 179, 242, .40)),
     $surface;
   border-bottom: 1px solid $line;
-  box-shadow: $purple-300;
+  box-shadow: $shadow-1;
 }
 
 .headerInner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 18px 16px;
   max-width: $mobile-max;
   margin: 0 auto;
@@ -65,16 +65,15 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
 
 
 .logo {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-  box-shadow: 0 6px 18px rgba(198, 120, 243, 0.427);
-  padding: 6px;
-  /* si tu SVG tiene espacio */
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  box-shadow: 0 8px 22px rgba(179, 120, 243, .12);
+  padding: 8px;
   border: 1px solid rgba(16, 24, 40, .06);
 }
 
@@ -289,15 +288,16 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
 /* === Contenedor para centrar y posicionar la barra inferior === */
 .navContainer {
   position: fixed;
-  left: 30%;
+  left: 50%;
   bottom: 12px;
   /* sitúa justo debajo del calendario */
-  transform: translateX(-60%);
+  transform: translateX(-50%);
   width: calc(100% - 24px);
   max-width: $mobile-max;
   display: flex;
   justify-content: center;
-  z-index: 40;
+  z-index: 50;
+  pointer-events: none;
 }
 
 /* Wrapper interno para permitir anular position del BottomNav hijo */
