@@ -15,7 +15,7 @@ $white: #ffffff;
 
 /* Helpers */
 $mobile-max: 375px;
-$radius-xl: 14px;
+$radius-xl: 16px;
 $shadow-1: 0 6px 18px rgba(17, 12, 46, .06);
 $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
 
@@ -23,8 +23,8 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
 .wrap {
   position: relative;
   min-height: 100svh;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(245, 241, 250, 1));
-  padding-bottom: 110px;
+  background: white;
+  padding-bottom: 10px;
   /* espacio para nav */
 }
 

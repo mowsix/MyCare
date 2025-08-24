@@ -54,3 +54,9 @@ $ink-900: #b388eb;
 
   svg { color: $ink-900; }
 }
+
+.fixedLeft {
+  left: max(0px, calc((100vw - 375px) / 2));
+  width: min(100vw, 375px);
+}
+
