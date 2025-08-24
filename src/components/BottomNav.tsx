@@ -18,24 +18,26 @@ const KitIcon = (p: React.SVGProps<SVGSVGElement>) => (
 
 export default function BottomNav() {
   return (
-    <nav className={s.nav} aria-label="Navegación inferior">
-      <ul>
-        <li>
+    // Por defecto la fijamos al fondo y alineada a la izquierda del “móvil”
+    <nav className={`${s.nav} ${s.fixedLeft}`} aria-label="Navegación inferior">
+      {/* Si prefieres en flujo normal, usa:  <nav className={s.nav} ...>  */}
+      <ul className={s.list}>
+        <li className={s.item}>
           <NavLink to="/home" end className={({ isActive }) => `${s.tab} ${isActive ? s.active : ""}`}>
             <HomeIcon />
           </NavLink>
         </li>
-        <li>
+        <li className={s.item}>
           <NavLink to="/meds" className={({ isActive }) => `${s.tab} ${isActive ? s.active : ""}`}>
             <PillIcon />
           </NavLink>
         </li>
-        <li>
+        <li className={s.item}>
           <NavLink to="/hair" className={({ isActive }) => `${s.tab} ${isActive ? s.active : ""}`}>
             <UserIcon />
           </NavLink>
         </li>
-        <li>
+        <li className={s.item}>
           <NavLink to="/skin" className={({ isActive }) => `${s.tab} ${isActive ? s.active : ""}`}>
             <KitIcon />
           </NavLink>

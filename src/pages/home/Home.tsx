@@ -6,9 +6,6 @@ import { useRoutine, formatTime } from "../../lib/routineStore";
 import BottomNav from "../../components/BottomNav";
 
 /* -------------------------- ICONOS INLINE (SVG) -------------------------- */
-const BellIcon = (p: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2Zm8-6V11a8 8 0 1 0-16 0v5l-2 2v1h20v-1l-2-2Z" /></svg>
-);
 const PillIcon = (p: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M4 12a5 5 0 0 0 8 4l-7-7a4.98 4.98 0 0 0-1 3Zm9-4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm-6.5.5 7 7" /></svg>
 );
@@ -159,11 +156,9 @@ export default function Home() {
       </Link>
 
       {/* Barra de navegación unificada */}
-      <div className={s.navContainer}>
-        <div className={s.navWrapper}>
+       
           <BottomNav />
-        </div>
-      </div>
+      
     </div>
   );
 }

@@ -1,0 +1,137 @@
+/* ======= Palette (mismas variables que Home) ======= */
+$rose-100: #fdc5f5;
+$magenta-100: #f7aef8;
+$violet-200: #c2a0ef;
+$lavender-200: #ceb3f2;
+$purple-300: #b388eb;
+
+$ink-900: #0f172a;
+$ink-800: #1f2937;
+$ink-700: #334155;
+$muted: #64748b;
+$line: rgba(16, 24, 40, .12);
+$white: #ffffff;
+
+$bg: #ffffff;
+$surface: #faf8ff;
+$card: rgba(255, 255, 255, .7);
+
+$mobile-max: 375px;
+$radius-xl: 16px;
+$shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
+$shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
+
+/* ======= Layout base (COPIA DEL HOME) ======= */
+.wrap {
+  position: relative;
+  min-height: 100svh;
+  background: $bg;
+  padding-bottom: 10px;
+}
+
+.container {
+  width: 100%;
+  max-width: $mobile-max;
+  margin: 0 auto;
+  padding: 8px 16px 20px;
+}
+
+/* ======= Header (COPIA DEL HOME) ======= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+  background:
+    linear-gradient(180deg, rgba(253, 197, 245, .65), rgba(206, 179, 242, .40)),
+    $surface;
+  border-bottom: 1px solid $line;
+  box-shadow: $shadow-1;
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 16px;
+  max-width: $mobile-max;
+  margin: 0 auto;
+}
+
+/* El header en Home aplica esta “pastilla” directo al SVG */
+.logo {
+  width: 72px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .85));
+  box-shadow: 0 8px 22px rgba(179, 120, 243, .12);
+  padding: 8px;
+  border: 1px solid rgba(16, 24, 40, .06);
+
+  /* 👇 fuerza color del contenido del SVG (tu Logo.tsx tiene <g fill="...">) */
+  g, path { fill: $purple-300 !important; }
+}
+
+/* ======= Main del Splash ======= */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-top: 16px;
+}
+
+.brandBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Tamaño del logo central del Splash */
+.brandLogo {
+  width: 88px;
+  height: 88px;
+
+  /* Color del dibujo del logo central */
+  g, path { fill: $ink-700 !important; }
+}
+
+.brandText {
+  letter-spacing: 0.35em;
+  font-weight: 800;
+  font-size: 20px;
+  color: $ink-900;
+}
+
+/* Loader (barra) */
+@keyframes slide {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
+.track {
+  width: 70%;
+  height: 10px;
+  border-radius: 9999px;
+  background: rgba(16, 24, 40, .08);
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.bar {
+  width: 36%;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, $violet-200, $magenta-100);
+  animation: slide 1.2s ease-in-out infinite;
+}
+
+.hint {
+  font-size: 14px;
+  color: $muted;
+}

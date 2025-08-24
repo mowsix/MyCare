@@ -1,25 +1,48 @@
 $mobile-max: 375px;
-$ink-700: #334155;
-$ink-900: #0f172a;
+$ink-700: #f7aef8;
+$ink-900: #b388eb;
 
-.nav {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: $mobile-max;
-  background: #ffffff;
-  border-top: 1px solid #d1d5db;
-  z-index: 50;
+/* ===== Reset del UL/LI para quitar los punticos y márgenes ===== */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
-  ul { display: grid; grid-template-columns: repeat(4, 1fr); }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;         /* centra verticalmente los tabs */
+  height: 64px;                /* altura consistente */
 }
 
+.item { margin: 0; padding: 0; }
+
+/* ===== Barra base ===== */
+.nav {
+  position: static;            /* Opción B: en flujo normal */
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #d1d5db;
+  z-index: 10;
+  /* margin-top: 16px;  // déjalo si usas opción B */
+}
+
+/* ===== Opción A: fija al fondo y alineada con el borde IZQ del “móvil” ===== */
+.fixedLeft {
+  position: fixed;
+  bottom: 0;
+  left: max(0px, calc((100vw - #{$mobile-max}) / 2));
+  /* con esto, si la ventana es más ancha que 375px, queda alineada al borde izq del contenedor; 
+     si es más angosta (móvil real), se va a 0px */
+  width: min(100vw, $mobile-max);
+  transform: none;             /* importante */
+}
+
+/* ===== Cada pestaña ===== */
 .tab {
-  display: grid;
-  place-items: center;
-  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;                /* igual a .list */
   text-decoration: none;
 
   svg { width: 28px; height: 28px; color: $ink-700; }

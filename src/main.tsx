@@ -1,5 +1,6 @@
 import './index.css'
-import "./tailwind.css";   // importa Tailwind globalmente
+import "./tailwind.css";   
+
 // import "./styles/main.scss"; // solo si estás usando SASS también
 import React from "react";
 import ReactDOM from "react-dom/client";
