@@ -171,6 +171,7 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   box-shadow: 0 10px 26px rgba(179, 120, 243, .08);
 }
 
+
 /* Nav centering wrapper */
 .navContainer {
   position: fixed;
@@ -185,16 +186,18 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   pointer-events: none;
 }
 
-.navWrapper {
-  width: 100%;
-  max-width: $mobile-max;
-  pointer-events: auto;
+.navArea {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+
+  /* Para que el BottomNav no se pegue a los bordes */
+  >* {
+    width: 100%;
+    max-width: 360px;
+  }
 }
 
-.navWrapper>* {
-  position: static !important;
-  width: 100% !important;
-}
 
 /* Modal */
 .modalBackdrop {

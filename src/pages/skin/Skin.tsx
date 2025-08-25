@@ -83,14 +83,13 @@ export default function Skin() {
 
         {/* Consejos (abre modal) */}
         <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
-      </div>
-
-      {/* Chip / BottomNav centering wrapper */}
-      <div className={s.navContainer}>
-        <div className={s.navWrapper}>
+        { /* Nav ahora dentro del container */}
+        <div className={s.navArea}>
           <BottomNav />
         </div>
       </div>
+
+
 
       {/* Modal de consejo */}
       {tipOpen && (

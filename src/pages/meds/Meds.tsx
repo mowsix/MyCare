@@ -81,12 +81,14 @@ export default function Meds() {
 
         {/* Consejos */}
         <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
+        {/* Navegación dentro del cuadro */}
+        <BottomNav variant="inline" />
       </div>
 
-      {/* Bottom nav centering wrapper */}
+      {/* Bottom nav centering wrapper }
       <div className={s.navContainer}>
         <div className={s.navWrapper}><BottomNav /></div>
-      </div>
+      </div> */}
 
       {/* Modal de consejos */}
       {tipOpen && (

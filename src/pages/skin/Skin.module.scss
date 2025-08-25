@@ -194,31 +194,19 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   box-shadow: 0 8px 22px rgba(179, 120, 243, .12);
 }
 
-/* ===== Bottom nav centering wrapper (igual patrón que Home) ===== */
-.navContainer {
-  position: fixed;
-  left: 50%;
-  bottom: 12px;
-  transform: translateX(-50%);
-  width: calc(100% - 24px);
-  max-width: $mobile-max;
+.navArea {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
-  z-index: 50;
-  pointer-events: none;
+
+  /* Para que el BottomNav no se pegue a los bordes */
+  >* {
+    width: 100%;
+    max-width: 360px;
+  }
 }
 
-.navWrapper {
-  width: 100%;
-  max-width: $mobile-max;
-  pointer-events: auto;
-}
 
-/* Forzamos que BottomNav hijo no use position:fixed (override) */
-.navWrapper>* {
-  position: static !important;
-  width: 100% !important;
-}
 
 /* ===== Modal (consejos) ===== */
 .modalBackdrop {

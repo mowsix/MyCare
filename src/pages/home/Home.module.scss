@@ -258,10 +258,20 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
 }
 
 /* ======= Chip calendario ======= */
+
+.navArea {
+  margin-top: 80px;
+  /* deja espacio para que el calendario "flote" encima */
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .calendar {
-  position: absolute;
-  right: 16px;
-  bottom: 150px;
+  position: static;
+  right: 62px;
+  bottom: 60px;
   width: 62px;
   border-radius: 14px;
   text-align: center;
@@ -285,34 +295,10 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   }
 }
 
-/* === Contenedor para centrar y posicionar la barra inferior === */
-.navContainer {
-  position: fixed;
-  left: 50%;
-  bottom: 12px;
-  /* sitúa justo debajo del calendario */
-  transform: translateX(-50%);
-  width: calc(100% - 24px);
-  max-width: $mobile-max;
-  display: flex;
-  justify-content: center;
-  z-index: 50;
-  pointer-events: none;
-}
 
-/* Wrapper interno para permitir anular position del BottomNav hijo */
-.navWrapper {
-  pointer-events: auto;
-  width: 100%;
-  max-width: $mobile-max;
-}
 
-/* Si BottomNav viene con position: fixed, forzamos que dentro de este wrapper sea estático.
-   Esto usa !important porque estamos sobrescribiendo estilos que puedan venir del propio componente. */
-.navWrapper>* {
-  position: static !important;
-  width: 100% !important;
-}
+
+
 
 /* ======= Iconos pequeños para resumen ======= */
 .iconSmall {

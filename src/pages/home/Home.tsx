@@ -149,16 +149,20 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Chip calendario */}
-      <Link to="/calendar" className={s.calendar} aria-label="Abrir calendario">
-        <div className="day" style={{ fontWeight: 900 }}>{day}</div>
-        <div className="mon">{mon}</div>
-      </Link>
 
-      {/* Barra de navegación unificada */}
-       
-          <BottomNav />
-      
+
+      {/* Barra de navegación dentro del flujo */}
+      <div className={s.navArea}>
+        <BottomNav variant="inline" />
+
+        {/* Chip calendario */}
+        <Link to="/calendar" className={s.calendar} aria-label="Abrir calendario">
+          <div className="day" style={{ fontWeight: 900 }}>{day}</div>
+          <div className="mon">{mon}</div>
+        </Link>
+      </div>
+
+
     </div>
   );
 }

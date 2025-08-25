@@ -10,15 +10,21 @@ $ink-900: #b388eb;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center;         /* centra verticalmente los tabs */
-  height: 64px;                /* altura consistente */
+  align-items: center;
+  /* centra verticalmente los tabs */
+  height: 64px;
+  /* altura consistente */
 }
 
-.item { margin: 0; padding: 0; }
+.item {
+  margin: 0;
+  padding: 0;
+}
 
 /* ===== Barra base ===== */
 .nav {
-  position: static;            /* Opción B: en flujo normal */
+  position: static;
+  /* Opción B: en flujo normal */
   width: 100%;
   background: #ffffff;
   border-top: 1px solid #d1d5db;
@@ -34,7 +40,8 @@ $ink-900: #b388eb;
   /* con esto, si la ventana es más ancha que 375px, queda alineada al borde izq del contenedor; 
      si es más angosta (móvil real), se va a 0px */
   width: min(100vw, $mobile-max);
-  transform: none;             /* importante */
+  transform: none;
+  /* importante */
 }
 
 /* ===== Cada pestaña ===== */
@@ -42,21 +49,37 @@ $ink-900: #b388eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;                /* igual a .list */
+  height: 64px;
+  /* igual a .list */
   text-decoration: none;
 
-  svg { width: 28px; height: 28px; color: $ink-700; }
+  svg {
+    width: 28px;
+    height: 28px;
+    color: $ink-700;
+  }
 }
 
 .active {
   background: #e5e7eb;
   border-top: 2px solid $ink-900;
 
-  svg { color: $ink-900; }
+  svg {
+    color: $ink-900;
+  }
 }
 
-.fixedLeft {
-  left: max(0px, calc((100vw - 375px) / 2));
-  width: min(100vw, 375px);
-}
 
+
+.inline {
+  position: static;
+  /* quita el fixed */
+  transform: none;
+  max-width: 100%;
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  margin-top: 14px;
+  /* separarlo del botón Consejos */
+  box-shadow: 0 6px 18px rgba(17, 12, 46, .06);
+}

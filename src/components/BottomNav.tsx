@@ -2,6 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./BottomNav.module.scss";
 
+type Props = {
+  /** fixed = flotante abajo (default). inline = dentro del layout */
+  variant?: "fixed" | "inline";
+  className?: string;
+};
+
 /* Iconos inline */
 const HomeIcon = (p: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 3 2 12h3v9h6v-6h2v6h6v-9h3Z" /></svg>
@@ -16,10 +22,10 @@ const KitIcon = (p: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 2c-3.5 4.3-6 7.6-6 10.5A6 6 0 0 0 12 19a6 6 0 0 0 6-6.5C18 9.6 15.5 6.3 12 2Z" /></svg>
 );
 
-export default function BottomNav() {
+export default function BottomNav({ variant = "fixed", className }: Props) {
   return (
     // Por defecto la fijamos al fondo y alineada a la izquierda del “móvil”
-    <nav className={`${s.nav} ${s.fixedLeft}`} aria-label="Navegación inferior">
+    <nav className={`${s.nav} ${variant === "inline" ? s.inline : ""} ${className ?? ""}`} aria-label="Navegación inferior">
       {/* Si prefieres en flujo normal, usa:  <nav className={s.nav} ...>  */}
       <ul className={s.list}>
         <li className={s.item}>

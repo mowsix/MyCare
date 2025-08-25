@@ -95,14 +95,12 @@ export default function Hair() {
         <div className={s.tipsWrap}>
           <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
         </div>
-      </div>
-
-      {/* Nav centering wrapper */}
-      <div className={s.navContainer}>
-        <div className={s.navWrapper}>
+        { /* Nav ahora dentro del container */}
+        <div className={s.navArea}>
           <BottomNav />
         </div>
       </div>
+
 
       {/* Modal */}
       {tipOpen && (
