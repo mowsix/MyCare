@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../app/providers/users-store";
 import Logo from "../../assets/Logo";
+import s from "./Register.module.scss"; // Import styles
 
 export default function Register() {
   const { register } = useUsers();
@@ -26,77 +27,71 @@ export default function Register() {
   };
 
   return (
-    <div className="auth-root">
-      <div className="w-[360px] max-w-full bg-white">
-        {/* Header: Logo + marca */}
-        <div className="flex flex-col items-center">
-          <Logo className="w-10 h-10 text-neutral-200" />
+    <div className={s.wrap}>
+      <form onSubmit={onSubmit} className={s.form}>
+        <div className={s.logoContainer}>
+          <Logo className={s.logo} />
         </div>
-        <form onSubmit={onSubmit} className="mt-16 space-y-6 px-6">
-          <div>
-            <label htmlFor="reg-user" className="login-label">Usuario</label>
-            <input
-              id="reg-user"
-              className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
-              placeholder=""
-              autoComplete="username"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-            />
-          </div>
 
-          <div>
-            <label htmlFor="reg-pass" className="login-label">Contraseña</label>
-            <input
-              id="reg-pass"
-              type="password"
-              className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
-              placeholder=""
-              autoComplete="new-password"
-              value={pass}
-              onChange={(e) => setPass(e.target.value)}
-            />
-          </div>
+        <div className={s.inputGroup}>
+          <label htmlFor="reg-user" className={s.label}>
+            Usuario
+          </label>
+          <input
+            id="reg-user"
+            type="text"
+            className={s.input}
+            placeholder=""
+            autoComplete="username"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
+        </div>
 
-          <div>
-            <label htmlFor="reg-confirm" className="login-label">Confirmar contraseña</label>
-            <input
-              id="reg-confirm"
-              type="password"
-              className="w-full rounded-md border-2 border-gray-400 px-6 py-4 text-2xl placeholder-gray-400 outline-none"
-              placeholder=""
-              autoComplete="new-password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-            />
-          </div>
+        <div className={s.inputGroup}>
+          <label htmlFor="reg-pass" className={s.label}>
+            Contraseña
+          </label>
+          <input
+            id="reg-pass"
+            type="password"
+            className={s.input}
+            placeholder=""
+            autoComplete="new-password"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+          />
+        </div>
 
-          {error && (
-            <div className="text-center text-sm text-red-600">{error}</div>
-          )}
+        <div className={s.inputGroup}>
+          <label htmlFor="reg-confirm" className={s.label}>
+            Confirmar contraseña
+          </label>
+          <input
+            id="reg-confirm"
+            type="password"
+            className={s.input}
+            placeholder=""
+            autoComplete="new-password"
+            value={confirm}
+            onChange={(e) => setConfirm(e.target.value)}
+          />
+        </div>
 
-          {/* Botón píldora grande “Registrarse” */}
-          <div className="flex justify-center pt-10">
-            <button
-              type="submit"
-              className="h-16 w-72 rounded-full border border-black bg-gray-300 text-2xl font-bold"
-            >
-              Registrarse
-            </button>
-          </div>
+        {error && <div className={s.error}>{error}</div>}
 
-          {/* Botón píldora pequeño “Volver” */}
-          <div className="flex justify-center pt-6">
-            <button
-              type="button"
-              onClick={() => navigate("/login")}
-              className="h-10 w-40 rounded-full border border-black bg-gray-300 text-lg font-semibold"
-            >
-              Volver
-            </button>
-          </div>
-        </form>
-      </div>
+        <button type="submit" className={s.button}>
+          Registrarse
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate("/login")}
+          className={s.secondaryButton}
+        >
+          Volver
+        </button>
+      </form>
     </div>
   );
 }
