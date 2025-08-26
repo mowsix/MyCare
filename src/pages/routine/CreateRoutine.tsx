@@ -69,7 +69,7 @@ export default function CreateRoutine() {
     }
     setDraftName(name);
     setDraftCategory(null);
-    setDraftDays([false, false, false, false, false, true, false]);
+    setDraftDays([false, false, false, false, false, false, false]);
     setDraftHour(8);
     setDraftMinute(0);
     setDraftMeridiem("AM");
@@ -192,7 +192,7 @@ export default function CreateRoutine() {
             <div className={s.modalTitle}>Configurar “{draftName}”</div>
 
             {/* Categoría */}
-            <div className={s.modalSub}>Categoría</div>
+            <div className={s.modalSub}>Categoría - selecciona una categoría para este producto</div>
             <div className={s.modalRow}>
               {(["pastillas", "piel", "cabello"] as Category[]).map((c) => (
                 <button
@@ -206,7 +206,7 @@ export default function CreateRoutine() {
             </div>
 
             {/* Días */}
-            <div className={s.modalSub} style={{ marginTop: 14 }}>Día</div>
+            <div className={s.modalSub} style={{ marginTop: 14 }}>Día - selecciona uno o varios días para este producto</div>
             <div className={s.modalDayGrid}>
               {DAY_LABELS.map((d, i) => {
                 const on = draftDays[i];
@@ -225,7 +225,7 @@ export default function CreateRoutine() {
             </div>
 
             {/* Hora */}
-            <div className={s.modalSub} style={{ marginTop: 14 }}>Hora</div>
+            <div className={s.modalSub} style={{ marginTop: 14 }}>Hora - selecciona una hora para este producto</div>
             <div className={s.modalTimeRow}>
               <div className={s.modalNum}>
                 <input
