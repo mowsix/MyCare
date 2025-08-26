@@ -50,8 +50,6 @@ export default function Hair() {
 
   return (
     <div className={s.wrap}>
-      <div className={s.container}>
-        {/* Header: title centered, logo left, icon right */}
         <header className={s.header}>
           <div className={s.logoWrap}>
             <Logo className={s.logo} />
@@ -63,6 +61,9 @@ export default function Hair() {
             <FaceIcon className={s.hairIcon} />
           </div>
         </header>
+      <div className={s.container}>
+        {/* Header: title centered, logo left, icon right */}
+
 
         {/* Section title */}
         <h2 className={s.h2}>Mis productos del cabello</h2>
@@ -98,11 +99,9 @@ export default function Hair() {
       </div>
 
       {/* Nav centering wrapper */}
-      <div className={s.navContainer}>
-        <div className={s.navWrapper}>
+
           <BottomNav />
-        </div>
-      </div>
+
 
       {/* Modal */}
       {tipOpen && (

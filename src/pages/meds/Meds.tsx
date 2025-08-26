@@ -51,7 +51,7 @@ export default function Meds() {
       <div className={s.container}>
 
 
-              <div className={s.titleRow}>
+        <div className={s.titleRow}>
           <h1 className={s.title}>Mis Píldoras</h1>
     
         </div>

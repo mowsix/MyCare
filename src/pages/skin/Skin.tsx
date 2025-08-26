@@ -46,8 +46,6 @@ export default function Skin() {
 
   return (
     <div className={s.wrap}>
-      <div className={s.container}>
-        {/* Header: título centrado. logo left, icon right (absolute) */}
         <header className={s.header}>
           <div className={s.logoWrap}>
             <Logo className={s.logo} />
@@ -59,6 +57,9 @@ export default function Skin() {
             <SkinIcon className={s.skinIcon} />
           </div>
         </header>
+      <div className={s.container}>
+        {/* Header: título centrado. logo left, icon right (absolute) */}
+
 
         {/* Botón Mi SkinCare */}
         <button className={s.skinBtn}>Mi SkinCare</button>
@@ -86,11 +87,7 @@ export default function Skin() {
       </div>
 
       {/* Chip / BottomNav centering wrapper */}
-      <div className={s.navContainer}>
-        <div className={s.navWrapper}>
           <BottomNav />
-        </div>
-      </div>
 
       {/* Modal de consejo */}
       {tipOpen && (

@@ -40,12 +40,19 @@ $shadow-2: 0 14px 36px rgba(17, 12, 46, .08);
 
 
 .titleRow {
+  
   display: flex;
   align-items: baseline;
   gap: 8px;
   margin: 20px 0 20px;
   padding: 0 4px;
   justify-content: center;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $ink-900;
+  }
 }
 
 
