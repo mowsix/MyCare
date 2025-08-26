@@ -28,17 +28,19 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
 
 /* ======= Layout base ======= */
 .wrap {
-  //position: relative;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background: $bg;
-  padding: 0;
-  //padding-bottom: 10px;
 }
 
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 12px 2rem 28px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 8rem; // Space for BottomNav
 }
 
 /* ======= Header ======= */
