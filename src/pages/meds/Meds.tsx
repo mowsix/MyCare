@@ -43,22 +43,15 @@ export default function Meds() {
 
   return (
     <div className={s.wrap}>
-
-
-           <header className={s.header2}>
-          <div className={s.logoWrap}><Logo className={s.logo} /></div>
-          <h1 className={s.titleTop}>Pastillas</h1>
-          <div className={s.headerRight}><PillBig className={s.pillBig} /></div>
-        </header>
-
-        
+      <header className={s.header2}>
+        <div className={s.logoWrap}><Logo className={s.logo} /></div>
+        <h1 className={s.titleTop}>Pastillas</h1>
+        <div className={s.headerRight}><PillBig className={s.pillBig} /></div>
+      </header>
       <div className={s.container}>
         {/* Header */}
-   
-
         {/* Subtítulo */}
         <h2 className={s.h2}>Mis Píldoras</h2>
-
         {/* Caja de lista */}
         <section className={s.listBox}>
           {products.length === 0 ? (
@@ -77,23 +70,16 @@ export default function Meds() {
             </ul>
           )}
         </section>
-
         {/* Crear Rutina */}
         <Link to="/routine" className={s.createBtn} aria-label="Crear Rutina">
           <span>Crear Rutina</span>
           <span className={s.plusWrap}><svg viewBox="0 0 24 24" className={s.plus}><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6Z" /></svg></span>
         </Link>
-
         {/* Consejos */}
         <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
       </div>
-
       {/* Bottom nav centering wrapper */}
-
-
-                <BottomNav />
-
-
+      <BottomNav />
       {/* Modal de consejos */}
       {tipOpen && (
         <div className={s.modalBackdrop} onClick={closeTip} role="dialog" aria-modal="true">
