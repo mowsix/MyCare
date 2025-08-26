@@ -375,7 +375,7 @@ position: sticky;
   transition: transform .12s ease, opacity .12s ease, background .2s ease;
 
   &:hover {
-    background: darken($secondary, 6%);
+    background: #B388EB;
     transform: translateY(-1px);
   }
 
