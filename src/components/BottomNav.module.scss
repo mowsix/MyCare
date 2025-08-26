@@ -64,13 +64,3 @@ $ink-900: #b388eb;
   }
 }
 
-// Versión mejorada para tablets y escritorio
-@media (min-width: 768px) {
-  .nav {
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(calc(100% - 48px), 980px);
-    border-radius: 16px 16px 0 0;
-    box-shadow: 0 8px 24px rgba(17, 12, 46, 0.08);
-  }
-}
