@@ -97,6 +97,7 @@ export default function Home() {
     return <KitIcon {...sizeProps} />;
   };
 
+
   // Chip calendario dinámico
   const day = String(now.getDate()).padStart(2, "0");
   const mon = MONTHS_ES[now.getMonth()];
@@ -104,10 +105,8 @@ export default function Home() {
   return (
     <div className={s.wrap}>
       {/* Header */}
-      <header className={s.header}>
-        <div className={s.headerInner}>
+      <header className={s.header2}>
           <Logo className={s.logo} />
-        </div>
       </header>
 
       <div className={s.container}>

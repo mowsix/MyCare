@@ -4,7 +4,7 @@ $magenta-100: #f7aef8;
 $violet-200: #c2a0ef;
 $lavender-200: #ceb3f2;
 $purple-300: #b388eb;
-
+$surface: #faf8ff;
 /* Neutrales */
 $ink-900: #0f172a;
 $ink-800: #1f2937;
@@ -24,12 +24,12 @@ $shadow-2: 0 14px 36px rgba(17, 12, 46, .08);
 
 /* Layout */
 .wrap {
-  position: relative;
-  min-height: 100svh;
+  //position: relative;
+  min-height: 100%;
   background: $bg;
-  padding-bottom: 10px;
+  padding: 0;
+  //padding-bottom: 10px;
 }
-
 .container {
   width: 100%;
   max-width: $mobile-max;
@@ -38,17 +38,28 @@ $shadow-2: 0 14px 36px rgba(17, 12, 46, .08);
 }
 
 /* Header */
-.header {
+.header2 {
   position: sticky;
-  height: 150px;
-  margin-bottom: 20px;
-  background: linear-gradient(180deg, $rose-100, $lavender-200);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(
+      180deg,
+      rgba(253, 197, 245, .65),
+      rgba(206, 179, 242, .40)
+    ),
+    $surface;
+  border-bottom: 1px solid $line;
   box-shadow: $shadow-1;
+
+  /* 👇 Asegura que ocupe todo el ancho SIEMPRE */
+  width: 100%;
+  min-width: 100%;   // fuerza a que cubra el viewport
+  height: 6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logoWrap {

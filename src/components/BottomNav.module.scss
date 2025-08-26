@@ -1,62 +1,76 @@
-$mobile-max: 375px;
+// Variables de color
 $ink-700: #f7aef8;
 $ink-900: #b388eb;
 
-/* ===== Reset del UL/LI para quitar los punticos y márgenes ===== */
+// Estilos del componente
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #d1d5db;
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom);
+  height: 4rem;
+}
+
 .list {
   list-style: none;
   margin: 0;
   padding: 0;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center;         /* centra verticalmente los tabs */
-  height: 64px;                /* altura consistente */
+  align-items: stretch; // Cambiado a stretch para que los items ocupen toda la altura
+  justify-items: stretch;
+  height: 100%;
 }
 
-.item { margin: 0; padding: 0; }
-
-/* ===== Barra base ===== */
-.nav {
-  position: static;            /* Opción B: en flujo normal */
-  width: 100%;
-  background: #ffffff;
-  border-top: 1px solid #d1d5db;
-  z-index: 10;
-  /* margin-top: 16px;  // déjalo si usas opción B */
+.item {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch; // Aseguramos que el item ocupe toda la altura
 }
 
-/* ===== Opción A: fija al fondo y alineada con el borde IZQ del “móvil” ===== */
-.fixedLeft {
-  position: fixed;
-  bottom: 0;
-  left: max(0px, calc((100vw - #{$mobile-max}) / 2));
-  /* con esto, si la ventana es más ancha que 375px, queda alineada al borde izq del contenedor; 
-     si es más angosta (móvil real), se va a 0px */
-  width: min(100vw, $mobile-max);
-  transform: none;             /* importante */
-}
-
-/* ===== Cada pestaña ===== */
 .tab {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;                /* igual a .list */
+  width: 100%;
+  height: 100%;
   text-decoration: none;
-
-  svg { width: 28px; height: 28px; color: $ink-700; }
+  
+  svg {
+    width: 28px;
+    height: 28px;
+    color: $ink-700;
+    transition: transform .15s ease, color .15s ease;
+  }
+  
+  &:active svg {
+    transform: scale(.95);
+  }
 }
 
 .active {
-  background: #e5e7eb;
+  background: #f3f4f6;
   border-top: 2px solid $ink-900;
-
-  svg { color: $ink-900; }
+  
+  // No necesitamos height: 100% aquí porque el .tab ya tiene height: 100%
+  svg {
+    color: $ink-900;
+  }
 }
 
-.fixedLeft {
-  left: max(0px, calc((100vw - 375px) / 2));
-  width: min(100vw, 375px);
+// Versión mejorada para tablets y escritorio
+@media (min-width: 768px) {
+  .nav {
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(calc(100% - 48px), 980px);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 8px 24px rgba(17, 12, 46, 0.08);
+  }
 }
-

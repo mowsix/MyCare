@@ -43,13 +43,18 @@ export default function Meds() {
 
   return (
     <div className={s.wrap}>
-      <div className={s.container}>
-        {/* Header */}
-        <header className={s.header}>
+
+
+           <header className={s.header2}>
           <div className={s.logoWrap}><Logo className={s.logo} /></div>
           <h1 className={s.titleTop}>Pastillas</h1>
           <div className={s.headerRight}><PillBig className={s.pillBig} /></div>
         </header>
+
+        
+      <div className={s.container}>
+        {/* Header */}
+   
 
         {/* Subtítulo */}
         <h2 className={s.h2}>Mis Píldoras</h2>
@@ -84,9 +89,10 @@ export default function Meds() {
       </div>
 
       {/* Bottom nav centering wrapper */}
-      <div className={s.navContainer}>
-        <div className={s.navWrapper}><BottomNav /></div>
-      </div>
+
+
+                <BottomNav />
+
 
       {/* Modal de consejos */}
       {tipOpen && (
