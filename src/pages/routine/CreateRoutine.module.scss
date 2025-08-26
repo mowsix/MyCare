@@ -111,7 +111,7 @@ $shadow-1: 0 6px 18px rgba(17, 12, 46, .08);
   justify-content: space-between;
   padding: 12px 6px;
 
-  &+& {
+  & + & {
     border-top: 1px dashed rgba(16, 24, 40, .14);
   }
 }
@@ -143,7 +143,7 @@ $shadow-1: 0 6px 18px rgba(17, 12, 46, .08);
   }
 }
 
-/* ======= Guardar ======= */
+/* ======= Guardar / Inicio ======= */
 .saveBtn {
   margin-top: 16px;
   width: 100%;
@@ -170,26 +170,6 @@ $shadow-1: 0 6px 18px rgba(17, 12, 46, .08);
   box-shadow: $shadow-1;
 }
 
-/* ======= Logo ======= */
-.logoWrap {
-  margin-top: 16px;
-  width: 100%;
-  border-radius: 999px;
-  padding: 14px 16px;
-  font-weight: 900;
-  font-size: 16px;
-}
-
-.logo {
-  width: 250px;
-  height: 100px;
-  background: transparent;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  box-shadow: 0 8px 20px rgba(179, 120, 243, .08);
-}
-
 /* ======= Modal combinado ======= */
 .modalMask {
   position: fixed;
@@ -212,15 +192,8 @@ $shadow-1: 0 6px 18px rgba(17, 12, 46, .08);
 }
 
 @keyframes pop {
-  from {
-    transform: scale(.98);
-    opacity: .6;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(.98); opacity: .6; }
+  to   { transform: scale(1);   opacity: 1;  }
 }
 
 .modalTitle {
@@ -364,4 +337,31 @@ $shadow-1: 0 6px 18px rgba(17, 12, 46, .08);
   background: linear-gradient(90deg, $lavender-200, $violet-200);
   border: 1px solid rgba(0, 0, 0, .06);
   color: $ink-900;
+}
+
+/* ======= Toast ======= */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;                    /* cómodo en móviles; súbelo si hay BottomNav */
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, $rose-100, $magenta-100);
+  color: $ink-900;                  /* texto oscuro legible */
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: $shadow-1;
+  z-index: 50;
+  text-align: center;
+  max-width: 90vw;
+  pointer-events: none;             /* no bloquea clicks del UI */
+  animation: fadeInOut 2.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translate(-50%, 20px); }
+  10%  { opacity: 1; transform: translate(-50%, 0); }
+  90%  { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, 20px); }
 }

@@ -120,6 +120,7 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   border: 1px solid rgba(0, 0, 0, .05);
   margin-top: 12px;
   box-shadow: $shadow-1;
+  font-size: larger;
 }
 
 /* H2 */
@@ -183,6 +184,7 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
 
 /* Crear rutina and Consejos */
 .createBtn {
+  text-decoration: none;
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
@@ -245,7 +247,7 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
 
 .modalCard {
   width: calc(100% - 48px);
-  max-width: 320px;
+  max-width: 520px;
   background: linear-gradient(180deg, $white, #fbf8ff);
   padding: 18px;
   border-radius: 12px;

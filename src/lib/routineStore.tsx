@@ -6,10 +6,10 @@ export interface RoutineItem {
   id: string;
   name: string;
   category: Category;
-  hour: number;   // 1..12
-  minute: number; // 0..59
+  hour: number;  
+  minute: number; 
   meridiem: Meridiem;
-  days: number[]; // índices seleccionados 0..6 (D..S)
+  days: number[]; 
   createdAt: number;
 }
 

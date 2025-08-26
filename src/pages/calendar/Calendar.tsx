@@ -4,7 +4,7 @@ import s from "./Calendar.module.scss";
 import BottomNav from "../../components/BottomNav";
 import { useRoutine, formatTime } from "../../lib/routineStore";
 
-const DAYS = ["D", "L", "M", "M", "J", "V", "S"];
+const DAYS = ["D", "L", "M", "W", "J", "V", "S"];
 
 
 export default function Calendar() {
