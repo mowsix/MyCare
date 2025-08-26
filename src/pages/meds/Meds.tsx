@@ -49,9 +49,12 @@ export default function Meds() {
         <div className={s.headerRight}><PillBig className={s.pillBig} /></div>
       </header>
       <div className={s.container}>
-        {/* Header */}
-        {/* Subtítulo */}
-        <h2 className={s.h2}>Mis Píldoras</h2>
+
+
+              <div className={s.titleRow}>
+          <h1 className={s.title}>Mis Píldoras</h1>
+    
+        </div>
         {/* Caja de lista */}
         <section className={s.listBox}>
           {products.length === 0 ? (
