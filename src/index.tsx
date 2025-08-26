@@ -8,7 +8,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Home from "./pages/home/Home";
 
-// (stubs opcionales; puedes crearlos vacíos si aún no existen)
+
 const Meds = () => <div className="p-6">Meds</div>;
 const Profile = () => <div className="p-6">Profile</div>;
 const Kit = () => <div className="p-6">Kit</div>;

@@ -24,9 +24,9 @@ const TIPS = [
 ];
 
 export default function Skin() {
-  // Solo elementos de categoría "piel" — si tu hook acepta un filtro como parámetro
-  const { items } = useRoutine?.("piel") ?? useRoutine(); // fallback por seguridad
-  // ordenar o memoizar si quieres
+  // Solo elementos de categoría "piel" 
+  const { items } = useRoutine?.("piel") ?? useRoutine();
+
   const products = useMemo(() => items?.slice?.() ?? [], [items]);
 
   // Modal de consejos
@@ -40,25 +40,25 @@ export default function Skin() {
   }
   function closeTip() {
     setTipOpen(false);
-    // opcional: limpiar tip tras cerrar
+    // limpiar tip tras cerrar
     setTimeout(() => setCurrentTip(null), 200);
   }
 
   return (
     <div className={s.wrap}>
-        <header className={s.header}>
-          <div className={s.logoWrap}>
-            <Logo className={s.logo} />
-          </div>
+      <header className={s.header}>
+        <div className={s.logoWrap}>
+          <Logo className={s.logo} />
+        </div>
 
-          <h1 className={s.titleTop}>Piel</h1>
+        <h1 className={s.titleTop}>Piel</h1>
 
-          <div className={s.headerRight}>
-            <SkinIcon className={s.skinIcon} />
-          </div>
-        </header>
+        <div className={s.headerRight}>
+          <SkinIcon className={s.skinIcon} />
+        </div>
+      </header>
       <div className={s.container}>
-        {/* Header: título centrado. logo left, icon right (absolute) */}
+
 
 
         {/* Botón Mi SkinCare */}
@@ -86,8 +86,8 @@ export default function Skin() {
         <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
       </div>
 
-      {/* Chip / BottomNav centering wrapper */}
-          <BottomNav />
+
+      <BottomNav />
 
       {/* Modal de consejo */}
       {tipOpen && (

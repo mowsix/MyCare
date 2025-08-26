@@ -21,7 +21,7 @@ $ink-900: #b388eb;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: stretch; // Cambiado a stretch para que los items ocupen toda la altura
+  align-items: stretch;
   justify-items: stretch;
   height: 100%;
 }
@@ -41,14 +41,14 @@ $ink-900: #b388eb;
   width: 100%;
   height: 100%;
   text-decoration: none;
-  
+
   svg {
     width: 28px;
     height: 28px;
     color: $ink-700;
     transition: transform .15s ease, color .15s ease;
   }
-  
+
   &:active svg {
     transform: scale(.95);
   }
@@ -57,10 +57,9 @@ $ink-900: #b388eb;
 .active {
   background: #f3f4f6;
   border-top: 2px solid $ink-900;
-  
-  // No necesitamos height: 100% aquí porque el .tab ya tiene height: 100%
+
+
   svg {
     color: $ink-900;
   }
 }
-

@@ -49,19 +49,17 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   top: 0;
   z-index: 20;
   backdrop-filter: blur(6px);
-  background: linear-gradient(
-      180deg,
+  background: linear-gradient(180deg,
       rgba(253, 197, 245, .65),
-      rgba(206, 179, 242, .40)
-    ),
+      rgba(206, 179, 242, .40)),
     $surface;
   border-bottom: 1px solid $line;
   box-shadow: $shadow-1;
 
-  /* 👇 Asegura que ocupe todo el ancho SIEMPRE */
+
   width: 100%;
-  min-width: 100%;   // fuerza a que cubra el viewport
-   height: 6rem;
+  min-width: 100%;
+  height: 6rem;
 
   display: flex;
   justify-content: center;
@@ -105,19 +103,7 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   justify-content: center;
 }
 
-/*.nav {
-  position: fixed;
-  left: 50%;
-  bottom: 12px;
-  transform: translateX(-50%);
-  width: calc(100% - 24px);
-  max-width: $mobile-max;
-  background: rgba(255, 255, 255, .95);
-  backdrop-filter: blur(8px);
-  border: 1px solid $line;
-  border-radius: 18px;
-  box-shadow: $shadow-2;
-}*/
+
 
 .title {
   font-size: 28px;
@@ -146,10 +132,10 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   overflow: hidden;
   margin-top: 8px;
   margin-bottom: 12px;
-  width: 100%;          /* Ocupar ancho total del padre */
-  max-width: 100%;      /* Evita restricciones si el padre tiene límites */
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
-  display: block;       /* Asegura que sea bloque */
+  display: block;
 }
 
 
@@ -160,7 +146,7 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   align-items: center;
   padding: 12px 16px;
   color: $ink-800;
-  position: relative; /* NECESARIO para que el ::before no se desborde */
+  position: relative;
 
   &+& {
     border-top: 1px dashed rgba(16, 24, 40, .12);
@@ -298,7 +284,7 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   }
 }
 
-/* === Contenedor para centrar y posicionar la barra inferior === */
+
 .navContainer {
   position: fixed;
   left: 50%;
@@ -313,15 +299,14 @@ $shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
   pointer-events: none;
 }
 
-/* Wrapper interno para permitir anular position del BottomNav hijo */
+
 .navWrapper {
   pointer-events: auto;
   width: 100%;
   max-width: $mobile-max;
 }
 
-/* Si BottomNav viene con position: fixed, forzamos que dentro de este wrapper sea estático.
-   Esto usa !important porque estamos sobrescribiendo estilos que puedan venir del propio componente. */
+
 .navWrapper>* {
   position: static !important;
   width: 100% !important;

@@ -53,7 +53,7 @@ export default function Meds() {
 
         <div className={s.titleRow}>
           <h1 className={s.title}>Mis Píldoras</h1>
-    
+
         </div>
         {/* Caja de lista */}
         <section className={s.listBox}>
@@ -81,7 +81,7 @@ export default function Meds() {
         {/* Consejos */}
         <button className={s.tipsBtn} onClick={openTip}>Consejos</button>
       </div>
-      {/* Bottom nav centering wrapper */}
+
       <BottomNav />
       {/* Modal de consejos */}
       {tipOpen && (

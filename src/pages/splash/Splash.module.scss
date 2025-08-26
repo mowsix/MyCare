@@ -23,21 +23,19 @@ $shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
   min-height: 100vh;
   min-height: 100svh;
   display: grid;
-  place-items: center; /* centra vertical y horizontal */
+  place-items: center;
   background:
     linear-gradient(180deg, rgba(253, 197, 245, .35), rgba(206, 179, 242, .18)),
     $bg;
-  /* safe areas (iOS notch) */
+  /* safe areas  */
   padding:
-    max(16px, env(safe-area-inset-top))
-    max(16px, env(safe-area-inset-right))
-    max(16px, env(safe-area-inset-bottom))
-    max(16px, env(safe-area-inset-left));
+    max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
 }
 
 .container {
   width: 100%;
-  max-width: 560px; /* limita ancho en landscape/tablet */
+  max-width: 560px;
+  /* limita ancho en landscape/tablet */
   margin: 0 auto;
 }
 
@@ -64,7 +62,10 @@ $shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
   height: clamp(72px, 18vw, 120px);
 
   /* fuerza color del dibujo del logo si tu SVG usa <g>/<path> */
-  g, path { fill: $ink-700 !important; }
+  g,
+  path {
+    fill: $ink-700 !important;
+  }
 }
 
 .brandText {
@@ -76,9 +77,17 @@ $shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
 
 /* ======= Loader (barra) ======= */
 @keyframes slide {
-  0%   { transform: translateX(-100%); }
-  60%  { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  60% {
+    transform: translateX(120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
 }
 
 .track {

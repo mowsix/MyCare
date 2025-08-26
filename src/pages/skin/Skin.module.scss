@@ -28,33 +28,32 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   height: 100vh;
   background: $bg;
 }
+
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 12px 2rem 28px;
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 8rem; // Space for BottomNav
+  padding-bottom: 8rem;
 }
 
-/* Header: titulo centrado, logo left, icon right */
+/* Header: */
 .header {
   position: sticky;
   top: 0;
   z-index: 20;
   backdrop-filter: blur(6px);
-  background: linear-gradient(
-      180deg,
+  background: linear-gradient(180deg,
       rgba(253, 197, 245, .65),
-      rgba(206, 179, 242, .40)
-    ),
+      rgba(206, 179, 242, .40)),
     $surface;
   border-bottom: 1px solid $line;
   box-shadow: $shadow-1;
 
   /* 👇 Asegura que ocupe todo el ancho SIEMPRE */
   width: 100%;
-  min-width: 100%;   // fuerza a que cubra el viewport
+  min-width: 100%; // fuerza a que cubra el viewport
   height: 6rem;
 
   display: flex;
@@ -209,7 +208,7 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   box-shadow: 0 8px 22px rgba(179, 120, 243, .12);
 }
 
-/* ===== Bottom nav centering wrapper (igual patrón que Home) ===== */
+/* ===== Bottom nav centering wrapper ===== */
 .navContainer {
   position: fixed;
   left: 50%;
@@ -229,7 +228,7 @@ $shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
   pointer-events: auto;
 }
 
-/* Forzamos que BottomNav hijo no use position:fixed (override) */
+
 .navWrapper>* {
   position: static !important;
   width: 100% !important;

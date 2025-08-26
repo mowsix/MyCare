@@ -3,6 +3,7 @@ import s from "./CreateRoutine.module.scss";
 import type { Category, Meridiem } from "../../lib/routineStore";
 import { RoutineDB } from "../../lib/routineStore";
 import { useNavigate } from "react-router-dom";
+import Lupa from "../../assets/lupa.svg";
 
 const DAY_LABELS = ["D", "L", "M", "M", "J", "V", "S"] as const;
 
@@ -127,7 +128,6 @@ export default function CreateRoutine() {
     });
     setPending([]);
     triggerToast("Rutina(s) guardada(s) 🎉");
-    // pequeña espera opcional si quieres que se vea el toast antes de navegar:
     setTimeout(() => navigate("/home", { replace: true }), 300);
   }
 
@@ -146,9 +146,9 @@ export default function CreateRoutine() {
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter") addQuery(); }}
           />
-          <svg className={s.searchIcon} viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 1 0-.71.71l.27.28v.79L20 20.49 21.49 19l-5.99-5zM6.5 11a4.5 4.5 0 1 1 9.001.001A4.5 4.5 0 0 1 6.5 11z" />
-          </svg>
+
+          <img className={s.searchIcon} src={Lupa} alt="" />
+
         </div>
         <button className={s.addBtn} onClick={addQuery}>Agregar a la lista</button>
 

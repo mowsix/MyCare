@@ -6,11 +6,10 @@ import { useRoutine } from "../../lib/routineStore";
 import BottomNav from "../../components/BottomNav";
 
 /* ---------- ICONOS INLINE ---------- */
-/* Icono grande para el header: silueta con coleta */
 const FaceIcon = (p: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-3.5 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12 18c-2.2 0-4-1.3-4-3h2c0 .7.9 1 2 1s2-.3 2-1h2c0 1.7-1.8 3-4 3Z" /></svg>
 );
-/* Icono pequeño para la lista: mini-silueta de pelo/cola (para usar en botones) */
+/* Icono pequeño para la lista:*/
 const SmallHair = (p: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...p}><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-3.5 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12 18c-2.2 0-4-1.3-4-3h2c0 .7.9 1 2 1s2-.3 2-1h2c0 1.7-1.8 3-4 3Z" /></svg>
 );
@@ -50,17 +49,17 @@ export default function Hair() {
 
   return (
     <div className={s.wrap}>
-        <header className={s.header}>
-          <div className={s.logoWrap}>
-            <Logo className={s.logo} />
-          </div>
+      <header className={s.header}>
+        <div className={s.logoWrap}>
+          <Logo className={s.logo} />
+        </div>
 
-          <h1 className={s.titleTop}>Cabello</h1>
+        <h1 className={s.titleTop}>Cabello</h1>
 
-          <div className={s.headerRight}>
-            <FaceIcon className={s.hairIcon} />
-          </div>
-        </header>
+        <div className={s.headerRight}>
+          <FaceIcon className={s.hairIcon} />
+        </div>
+      </header>
       <div className={s.container}>
         {/* Header: title centered, logo left, icon right */}
 
@@ -100,7 +99,7 @@ export default function Hair() {
 
       {/* Nav centering wrapper */}
 
-          <BottomNav />
+      <BottomNav />
 
 
       {/* Modal */}
