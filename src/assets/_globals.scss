@@ -1,0 +1,48 @@
+/* --------------------------------- */
+/*           PALETA DE COLORES         */
+/* --------------------------------- */
+
+// Paleta principal (tonos rosados y púrpuras)
+$rose-100: #fdc5f5;
+$magenta-100: #f7aef8;
+$violet-200: #c2a0ef;
+$lavender-200: #ceb3f2;
+$purple-300: #b388eb;
+
+// Alias semánticos (opcional pero recomendado)
+$primary-light: $rose-100;
+$primary: $magenta-100;
+$secondary: $purple-300;
+$accent: $violet-200;
+$accent-light: $lavender-200;
+
+
+/* --------------------------------- */
+/*             NEUTRALES             */
+/* --------------------------------- */
+
+$ink-900: #0f172a; // El más oscuro, para texto principal
+$ink-800: #1f2937;
+$ink-700: #334155;
+$muted: #64748b;   // Para texto secundario o deshabilitado
+$line: rgba(16, 24, 40, .12); // Para bordes y líneas sutiles
+$white: #ffffff;
+$black: #000000;
+
+
+/* --------------------------------- */
+/*            SUPERFICIES            */
+/* --------------------------------- */
+
+$bg: #ffffff;      // Fondo general de la app
+$surface: #faf8ff; // Tinte lila muy sutil para headers o fondos especiales
+
+
+/* --------------------------------- */
+/*             VARIABLES             */
+/* --------------------------------- */
+
+$mobile-max: 375px;
+$radius-xl: 16px;
+$shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
+$shadow-2: 0 6px 24px rgba(17, 12, 46, .08);

@@ -141,13 +141,12 @@ export default function CreateRoutine() {
           <input
             className={s.search}
             type="text"
-            placeholder="Busca o escribe tu producto"
+            placeholder="Escribe tu producto"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter") addQuery(); }}
           />
 
-          <img className={s.searchIcon} src={Lupa} alt="" />
 
         </div>
         <button className={s.addBtn} onClick={addQuery}>Agregar a la lista</button>

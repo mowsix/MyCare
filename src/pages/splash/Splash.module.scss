@@ -1,21 +1,4 @@
-/* ======= Palette ======= */
-$rose-100: #fdc5f5;
-$magenta-100: #f7aef8;
-$violet-200: #c2a0ef;
-$lavender-200: #ceb3f2;
-$purple-300: #b388eb;
-
-$ink-900: #0f172a;
-$ink-800: #1f2937;
-$ink-700: #334155;
-$muted: #64748b;
-$line: rgba(16, 24, 40, .12);
-$white: #ffffff;
-
-$bg: #ffffff;
-$surface: #faf8ff;
-
-$shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
+@use '../../assets/globals.scss' as *;
 
 /* ======= Layout centrado ======= */
 .wrap {
@@ -110,4 +93,31 @@ $shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
 .hint {
   font-size: 14px;
   color: $muted;
+}
+
+/* ======= Botón de inicio (opcional) ======= */
+.startBtn {
+  /* Oculto por defecto */
+  opacity: 0;
+  pointer-events: none;
+  /* Transición suave */
+  transition: opacity .25s ease;
+
+  /* Estilos del botón */
+  width: clamp(220px, 60vw, 420px);
+  padding: 14px 20px;
+  border-radius: 9999px;
+  border: none;
+  background: linear-gradient(90deg, $violet-200, $magenta-100);
+  color: $ink-900;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: $shadow-1;
+  cursor: pointer;
+}
+
+/* Clase para mostrar el botón */
+.visible {
+  opacity: 1;
+  pointer-events: auto;
 }

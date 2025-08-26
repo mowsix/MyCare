@@ -1,30 +1,6 @@
-/* ======= Palette (coolors) ======= */
-$rose-100: #fdc5f5; // rosa
-$magenta-100: #f7aef8; // magenta claro
-$violet-200: #c2a0ef; // violeta claro
-$lavender-200: #ceb3f2; // lavanda
-$purple-300: #b388eb; // púrpura medio
+@use '../../assets/globals.scss' as *;
 
-/* ======= Neutrales accesibles ======= */
-$ink-900: #0f172a; // texto principal
-$ink-800: #1f2937;
-$ink-700: #334155;
-$muted: #64748b;
-$line: rgba(16, 24, 40, .12);
-$white: #ffffff;
-
-/* ======= Superficies ======= */
-$bg: #fff;
-/* fondo limpio para contraste */
-$surface: #faf8ff;
-/* muy leve tinte lila */
 $card: rgba(255, 255, 255, .7);
-
-/* ======= Helpers ======= */
-$mobile-max: 375px;
-$radius-xl: 16px;
-$shadow-1: 0 2px 10px rgba(17, 12, 46, .06);
-$shadow-2: 0 6px 24px rgba(17, 12, 46, .08);
 
 /* ======= Layout base ======= */
 .wrap {

@@ -1,25 +1,4 @@
-/* ===== Palette (coolors) ===== */
-$rose-100: #fdc5f5;
-$magenta-100: #f7aef8;
-$violet-200: #c2a0ef;
-$lavender-200: #ceb3f2;
-$purple-300: #b388eb;
-$bg: #fff;
-$surface: #faf8ff;
-
-/* Neutrales */
-$ink-900: #0f172a;
-$ink-800: #1f2937;
-$ink-700: #334155;
-$muted: #64748b;
-$line: rgba(16, 24, 40, .12);
-$white: #ffffff;
-
-/* Helpers */
-$mobile-max: 375px;
-$radius-xl: 16px;
-$shadow-1: 0 6px 18px rgba(17, 12, 46, .06);
-$shadow-2: 0 12px 36px rgba(17, 12, 46, .08);
+@use '../../assets/globals.scss' as *;
 
 /* Layout */
 .wrap {

@@ -1,6 +1,4 @@
-// Variables de color
-$ink-700: #f7aef8;
-$ink-900: #b388eb;
+@use '../assets/globals' as *;
 
 // Estilos del componente
 .nav {
@@ -8,8 +6,8 @@ $ink-900: #b388eb;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #fff;
-  border-top: 1px solid #d1d5db;
+  background: $white;
+  border-top: 1px solid $line;
   z-index: 50;
   padding-bottom: env(safe-area-inset-bottom);
   height: 4rem;
@@ -45,7 +43,7 @@ $ink-900: #b388eb;
   svg {
     width: 28px;
     height: 28px;
-    color: $ink-700;
+    color: $primary; // Usando variable global
     transition: transform .15s ease, color .15s ease;
   }
 
@@ -55,11 +53,11 @@ $ink-900: #b388eb;
 }
 
 .active {
-  background: #f3f4f6;
-  border-top: 2px solid $ink-900;
+  background: $surface; // Usando variable global
+  border-top: 2px solid $secondary; // Usando variable global
 
 
   svg {
-    color: $ink-900;
+    color: $secondary; // Usando variable global
   }
 }
