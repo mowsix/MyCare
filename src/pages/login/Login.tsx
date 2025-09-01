@@ -91,7 +91,7 @@ export default function Login({ onSubmit }: LoginProps) {
           onClick={() => navigate("/register")}
           className={s.secondaryButton}
         >
-          Registrarse
+          <u>Registrarme</u>
         </button>
       </form>
     </div>

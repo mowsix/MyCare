@@ -13,7 +13,9 @@ import { UsersProvider } from "./app/providers/users-store";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <UsersProvider>
-      <RouterProvider router={router} />
+      <div style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
+        <RouterProvider router={router} />
+      </div>
     </UsersProvider>
   </React.StrictMode>
 );
