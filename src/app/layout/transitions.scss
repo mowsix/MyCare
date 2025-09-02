@@ -1,35 +1,68 @@
+/* ---------- Contenedor tipo "pantalla de móvil" ---------- */
+.viewport {
+  position: relative;
+  overflow: hidden;
+  height: 100dvh; /* mejor soporte móvil que 100vh */
+  width: 100%;
+  background: var(--app-bg, #fff);
+  border-radius: 12px; /* simula esquinas redondeadas del móvil */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Cada ruta ocupa toda la pantalla */
+.route-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  will-change: transform, opacity;
+}
+
+/* Evita clicks en la vista que está saliendo */
+[class*="-exit"] {
+  pointer-events: none;
+}
+
+/* ---------- Push (navegar hacia adelante) ---------- */
 .page-enter {
   transform: translateX(100%);
 }
-
 .page-enter-active {
   transform: translateX(0%);
-  transition: transform 100ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+  z-index: 2; /* la que entra queda encima */
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
 }
-
 .page-exit {
   transform: translateX(0%);
 }
-
 .page-exit-active {
-  transform: translateX(-100%);
-  transition: transform 100ms ease-in-out;
+  transform: translateX(-20%) scale(0.95);
+  opacity: 0.7;
+  transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+  z-index: 1; /* se queda detrás */
 }
 
+/* ---------- Pop (volver atrás) ---------- */
 .page-left-enter {
-  transform: translateX(-100%);
+  transform: translateX(-20%) scale(0.95);
+  opacity: 0.7;
+  z-index: 1; /* entra por detrás */
 }
-
 .page-left-enter-active {
-  transform: translateX(0);
-  transition: transform 100ms ease-in-out;
+  transform: translateX(0%) scale(1);
+  opacity: 1;
+  transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+  z-index: 2; /* ya visible encima */
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
 }
-
 .page-left-exit {
-  transform: translateX(0);
+  transform: translateX(0%);
+  z-index: 2;
 }
-
 .page-left-exit-active {
   transform: translateX(100%);
-  transition: transform 100ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+  z-index: 1;
 }

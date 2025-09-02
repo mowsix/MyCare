@@ -8,17 +8,19 @@ export default function RootLayout() {
   const nodeRef = useRef(null);
 
   return (
-    <SwitchTransition mode="out-in">
-      <CSSTransition
-        key={location.pathname}
-        nodeRef={nodeRef}
-        timeout={300}
-        classNames={location.state?.direction === 'left' ? 'page-left' : 'page'}
-      >
-        <div ref={nodeRef} style={{ position: 'absolute', width: '100%', height: '100%' }}>
-          <Outlet />
-        </div>
-      </CSSTransition>
-    </SwitchTransition>
+    <div className="viewport">
+      <SwitchTransition mode="out-in">
+        <CSSTransition
+          key={location.pathname}
+          nodeRef={nodeRef}
+          timeout={300}
+          classNames={location.state?.direction === 'left' ? 'page-left' : 'page'}
+        >
+          <div className="route-wrapper" ref={nodeRef}>
+            <Outlet />
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
+    </div>
   );
 }
