@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MyCare</string>
+    <string name="title_activity_main">MyCare</string>
+    <string name="package_name">co.edu.upb.MiCuidado641</string>
+    <string name="custom_url_scheme">co.edu.upb.MiCuidado641</string>
+</resources>
