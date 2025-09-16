@@ -1,4 +1,3 @@
-import React from "react";
 import s from "../CreateRoutine.module.scss";
 
 const LABELS = ["D", "L", "M", "M", "J", "V", "S"] as const;

@@ -1,9 +1,8 @@
-import React, { useMemo, useState, useRef, useEffect, useCallback } from "react";
+import  { useMemo, useState, useRef, useEffect, useCallback } from "react";
 import s from "./CreateRoutine.module.scss";
 import type { Category, Meridiem } from "../../lib/routineStore";
 import { RoutineDB } from "../../lib/routineStore";
 import { useNavigate } from "react-router-dom";
-import Lupa from "../../assets/lupa.svg";
 
 const DAY_LABELS = ["D", "L", "M", "M", "J", "V", "S"] as const;
 

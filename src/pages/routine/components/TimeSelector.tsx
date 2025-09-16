@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import  { useMemo } from "react";
 import s from "../CreateRoutine.module.scss";
 import type { Meridiem } from "../../../lib/routineStore";
 

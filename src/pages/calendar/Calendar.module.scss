@@ -82,6 +82,13 @@
   color: $secondary;
   text-align: center;
 }
+.alert {
+  font-size: 1rem;
+  font-weight: 600; 
+  margin-bottom: 12px;
+  color: black;
+  text-align: center;
+}
 
 .weekRow {
   display: grid;
@@ -370,3 +377,4 @@
     opacity: .95;
   }
 }
+

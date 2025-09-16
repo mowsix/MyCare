@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Logo from "../../assets/Logo";
 import s from "./Calendar.module.scss";
 import BottomNav from "../../components/BottomNav";
@@ -34,6 +34,7 @@ export default function Calendar() {
       {/* Main */}
       <main className={s.main}>
         <h1 className={s.title}>Calendario</h1>
+        <h3 className={s.alert}>Selecciona un día de la semana para ver tu rutina</h3>
         <h2 className={s.subtitle}>Semana</h2>
 
         {/* Semana */}
